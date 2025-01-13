@@ -1,4 +1,4 @@
-import {siteMetadata} from '@/lib/layout-config'
+import {siteMetadata, montserrat} from '@/lib/layout-config'
 import './globals.css'
 
 export const metadata = siteMetadata
@@ -10,7 +10,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ru">
-      <body className={`antialiased`}>{children}</body>
+      <body className={`${montserrat.variable} font-montserrat antialiased`}>{children}</body>
     </html>
   )
 }
