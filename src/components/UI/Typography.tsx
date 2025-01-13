@@ -11,6 +11,7 @@ export type TypoTypes = keyof typeof typoClasses
 export const typoClasses = {
   h1: 'text-[78px] xl:text-6xl !leading-[1.1] tracking-tight font-bold uppercase',
   h4: 'text-[28px] xl:text-2xl tracking-tighter font-medium',
+  p: 'text-xl xl:text-lg sm:text-base',
 } as const
 
 function Typography({type, className, children}: Props) {
@@ -30,3 +31,4 @@ function createTypography(type: TypoTypes) {
 
 export const H1 = createTypography('h1')
 export const H4 = createTypography('h4')
+export const P = createTypography('p')

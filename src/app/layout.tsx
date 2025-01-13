@@ -3,6 +3,8 @@ import './globals.css'
 
 export const metadata = siteMetadata
 
+import Header from '~/Global/Header'
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -10,7 +12,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ru">
-      <body className={`bg-white text-black ${montserrat.variable} font-montserrat antialiased`}>{children}</body>
+      <body className={`bg-white text-black ${montserrat.variable} font-montserrat antialiased`}>
+        <Header />
+        {children}
+      </body>
     </html>
   )
 }
