@@ -10,7 +10,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ru">
-      <body className={`${montserrat.variable} font-montserrat antialiased`}>{children}</body>
+      <body className={`bg-white text-black ${montserrat.variable} font-montserrat antialiased`}>{children}</body>
     </html>
   )
 }
