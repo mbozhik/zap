@@ -1,19 +1,11 @@
 import LogoImage from '$/logo.svg'
-import {WEBSITE_BOX} from '@/app/page'
+import {WEBSITE_BOX, HEADER_LINKS} from '@/lib/constants'
 
 import Image from 'next/image'
 import Link from 'next/link'
 import {P} from '~/UI/Typography'
 import Button from '~/UI/Button'
 import {cn} from '@/lib/utils'
-
-const HEADER_LINKS = {
-  mechanics: 'как это работает',
-  about: 'о нас',
-  advantages: 'почему мы',
-  faq: 'FAQ',
-  contacts: 'Контакты',
-}
 
 export const ACTION_LINK = 'https://t.me/zap_miniapp_bot'
 

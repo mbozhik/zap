@@ -1,6 +1,6 @@
 import HeroImage from '$/hero.jpg'
 
-import {WEBSITE_BOX} from '@/app/page'
+import {WEBSITE_BOX} from '@/lib/constants'
 import {ACTION_LINK} from '~/Global/Header'
 
 import {cn} from '@/lib/utils'
