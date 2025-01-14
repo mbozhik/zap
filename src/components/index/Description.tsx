@@ -1,5 +1,4 @@
-import {BLOCK_BOX} from '@/lib/constants'
-import {ACTION_LINK} from '~/Global/Header'
+import {BLOCK_BOX, ACTION_LINK} from '@/lib/constants'
 
 import {H2} from '~/UI/Typography'
 import Button from '~/UI/Button'

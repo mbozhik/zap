@@ -1,8 +1,7 @@
 import HeroImage from '$/hero.jpg'
 
 import type {HeroBlock} from '@/lib/sanity'
-import {WEBSITE_BOX} from '@/lib/constants'
-import {ACTION_LINK} from '~/Global/Header'
+import {WEBSITE_BOX, ACTION_LINK} from '@/lib/constants'
 
 import {cn} from '@/lib/utils'
 import Image from 'next/image'

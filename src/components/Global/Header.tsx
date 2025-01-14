@@ -1,5 +1,5 @@
 import LogoImage from '$/logo.svg'
-import {WEBSITE_BOX, HEADER_LINKS} from '@/lib/constants'
+import {WEBSITE_BOX, HEADER_LINKS, ACTION_LINK} from '@/lib/constants'
 
 import {cn} from '@/lib/utils'
 
@@ -7,8 +7,6 @@ import Image from 'next/image'
 import Link from 'next/link'
 import {P} from '~/UI/Typography'
 import Button from '~/UI/Button'
-
-export const ACTION_LINK = 'https://t.me/zap_miniapp_bot'
 
 export default function Header() {
   return (
