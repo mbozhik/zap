@@ -1,19 +1,20 @@
 import LogoImage from '$/logo.svg'
 import {WEBSITE_BOX, HEADER_LINKS} from '@/lib/constants'
 
+import {cn} from '@/lib/utils'
+
 import Image from 'next/image'
 import Link from 'next/link'
 import {P} from '~/UI/Typography'
 import Button from '~/UI/Button'
-import {cn} from '@/lib/utils'
 
 export const ACTION_LINK = 'https://t.me/zap_miniapp_bot'
 
 export default function Header() {
   return (
-    <header className={cn('fixed z-50 w-full pt-3.5 sm:pt-2', WEBSITE_BOX)}>
-      <div className="grid items-center grid-cols-5 sm:flex sm:justify-between p-1.5 bg-white border-2 border-black rounded-xl sm:border-none">
-        <div className="pl-2">
+    <header className={cn('fixed z-50 w-full pt-3.5 sm:pt-0', WEBSITE_BOX, 'sm:px-0')}>
+      <div className="grid items-center grid-cols-5 sm:flex sm:justify-between p-1.5 sm:py-2 bg-white border-2 border-black rounded-xl sm:border-none">
+        <div className="pl-2 sm:pl-1">
           <Image className="w-28 sm:w-20" src={LogoImage} alt="Логотип Zap" />
         </div>
 
