@@ -1,10 +1,6 @@
 import {defineType, Rule, isDev, defineField} from 'sanity'
 
-const types = ['Контент', 'Изображение'] as const
-const colors = ['Зеленый', 'Черный', 'Серый'] as const
-
-export type GridItemType = (typeof types)[number]
-export type GridItemColor = (typeof colors)[number]
+import {types, colors} from '../../src/lib/types'
 
 export const itemGrid = defineType({
   name: 'itemGrid',

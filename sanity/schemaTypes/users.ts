@@ -3,8 +3,7 @@ import {defineField, defineType, Rule, isDev} from 'sanity'
 import React from 'react'
 import {Users as UsersIcon} from 'lucide-react'
 
-export const USER_VIEWS = ['Отправителям', 'Путешественникам'] as const
-export type UserType = (typeof USER_VIEWS)[number]
+import {USER_VIEWS, type UserType} from '../../src/lib/types'
 
 const isAllowedValue = (value: unknown): value is UserType =>
   typeof value === 'string' && USER_VIEWS.includes(value as UserType)

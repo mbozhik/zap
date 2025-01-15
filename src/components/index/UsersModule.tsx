@@ -1,6 +1,6 @@
 'use client'
 
-import {USER_VIEWS, type UserType} from 'sanity/schemaTypes/users'
+import {USER_VIEWS, type UserType} from '@/lib/types'
 import {urlForImage, type UsersData, type GridItem} from '@/lib/sanity'
 
 import {useState} from 'react'

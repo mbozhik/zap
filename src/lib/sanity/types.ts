@@ -1,5 +1,4 @@
-import type {GridItemType, GridItemColor} from 'sanity/schemaTypes/itemGrid'
-import type {UserType} from 'sanity/schemaTypes/users'
+import type {UserType, GridItemType, GridItemColor} from '@/lib/types'
 
 import type {ImageProps} from 'next-sanity/image'
 
