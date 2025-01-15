@@ -1,10 +1,12 @@
 import type {UserType, GridItemType, GridItemColor} from '@/lib/types'
 
 import type {ImageProps} from 'next-sanity/image'
+import type {IconName} from 'lucide-react/dynamic'
 
 export type LayoutData = {
   hero: HeroBlock
   mechanics: MechanicsBlock[]
+  advantages: AdvantagesBlock[]
 }
 
 export type HeroBlock = {
@@ -22,6 +24,12 @@ export type MechanicsBlock = {
   }[]
 }
 
+export type AdvantagesBlock = {
+  heading: string
+  caption: string
+  icon: IconName
+}
+
 export type UsersData = {
   type: UserType
   grid: GridItem[]
@@ -32,6 +40,6 @@ export type GridItem = {
   heading: string | null
   caption: string | null
   background: GridItemColor
-  icon: string
+  icon: IconName
   image: ImageProps
 }

@@ -32,6 +32,13 @@ export const layout = defineType({
       of: [{type: 'itemMechanics'}],
       validation: (rule) => rule.required().min(1),
     }),
+    defineField({
+      name: 'advantages',
+      title: 'Преимущества',
+      type: 'array',
+      of: [{type: 'itemAdvantages'}],
+      validation: (rule) => rule.required().min(1),
+    }),
   ],
   preview: {
     select: {
