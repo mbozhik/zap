@@ -1,4 +1,4 @@
-export type {LayoutData, HeroBlock} from './types'
+export type {LayoutData, HeroBlock, MechanicsBlock} from './types'
 
-export {client} from './config'
+export {client, urlForImage} from './config'
 export {INDEX_QUERY} from './queries'

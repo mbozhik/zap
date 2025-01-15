@@ -9,7 +9,7 @@ import {client, INDEX_QUERY, type LayoutData} from '@/lib/sanity'
 
 export default async function IndexPage() {
   const pageData: LayoutData = await client.fetch(INDEX_QUERY)
-  const {hero} = pageData
+  const {hero, mechanics} = pageData
 
   return (
     <>
