@@ -16,7 +16,7 @@ export default async function IndexPage() {
       <Hero data={hero} />
 
       <main className={cn(WEBSITE_BOX, 'py-20 sm:py-14', 'space-y-20 sm:space-y-14')}>
-        <Mechanics />
+        <Mechanics data={mechanics} />
         <Description />
       </main>
     </>
