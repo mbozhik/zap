@@ -10,7 +10,7 @@ import Button from '~/UI/Button'
 
 export default function Mechanics({data}: {data: MechanicsBlock[]}) {
   return (
-    <section id="mechanics" data-section="mechanics-index" className="flex flex-col items-center gap-20 xl:gap-16 sm:gap-8 border-2 border-black rounded-[32px] sm:rounded-3xl pt-16 pb-20 xl:pt-12 xl:pb-14 sm:py-8">
+    <section id="mechanics" data-section="mechanics-index" className="flex flex-col items-center gap-20 xl:gap-16 sm:gap-8 border-2 border-black rounded-[32px] xl:rounded-3xl sm:rounded-2xl pt-16 pb-20 xl:pt-12 xl:pb-14 sm:py-8">
       <H1 className="sm:text-center">Как это работает?</H1>
 
       <div className={cn(BLOCK_BOX, 'space-y-20 sm:space-y-12 sm:px-3')}>
@@ -42,7 +42,7 @@ function MechanicsCard({data, idx}: {data: MechanicsBlock; idx: number}) {
         <div className="flex flex-col gap-6 sm:gap-5 sm:flex-row">
           <div className="-mb-3 text-[156px] xl:text-8xl sm:text-6xl font-bold leading-none">{idx + 1}</div>
 
-          <div className="space-y-2 xl:space-y-3">
+          <div className="space-y-3">
             <H2 className="max-w-[10ch] !leading-[1]">{data.heading}</H2>
             <P className="max-w-[30ch] xl:leading-[1.2] sm:leading-[1.25]">{data.caption}</P>
           </div>

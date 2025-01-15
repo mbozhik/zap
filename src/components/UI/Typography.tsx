@@ -11,7 +11,7 @@ export type TypoTypes = keyof typeof typoClasses
 export const typoClasses = {
   h1: 'text-[78px] xl:text-6xl sm:text-[34px] !leading-[1.1] tracking-tight sm:tracking-tighter font-bold uppercase',
   h2: 'text-[56px] xl:text-4xl sm:text-3xl !leading-[1.2] tracking-tighter font-bold',
-  h4: 'text-[28px] xl:text-2xl sm:text-xl tracking-tighter font-medium',
+  h4: 'text-[28px] xl:text-2xl sm:text-xl tracking-[-0.04em] font-medium',
   p: 'text-xl xl:text-lg sm:text-lg',
 } as const
 
