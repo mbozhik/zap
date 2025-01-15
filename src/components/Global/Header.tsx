@@ -16,7 +16,7 @@ export default function Header() {
           <Image className="w-28 sm:w-20" src={LogoImage} alt="Логотип Zap" />
         </div>
 
-        <nav className="flex invisible col-span-3 gap-6 justify-self-center sm:hidden">
+        <nav className="flex col-span-3 gap-6 justify-self-center sm:hidden">
           {Object.entries(HEADER_LINKS).map(([key, label]) => {
             return (
               <Link href={`/#${key}`} className="block duration-200 border-b border-transparent hover:border-black" key={key}>

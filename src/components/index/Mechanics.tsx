@@ -10,7 +10,7 @@ import Button from '~/UI/Button'
 
 export default function Mechanics({data}: {data: MechanicsBlock[]}) {
   return (
-    <section data-section="mechanics-index" className="flex flex-col items-center gap-20 xl:gap-16 sm:gap-8 border-2 border-black rounded-[32px] sm:rounded-3xl pt-16 pb-20 xl:pt-12 xl:pb-14 sm:py-8">
+    <section id="mechanics" data-section="mechanics-index" className="flex flex-col items-center gap-20 xl:gap-16 sm:gap-8 border-2 border-black rounded-[32px] sm:rounded-3xl pt-16 pb-20 xl:pt-12 xl:pb-14 sm:py-8">
       <H1 className="sm:text-center">Как это работает?</H1>
 
       <div className={cn(BLOCK_BOX, 'space-y-20 sm:space-y-12 sm:px-3')}>
