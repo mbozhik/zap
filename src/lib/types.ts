@@ -6,3 +6,5 @@ export type GridItemType = (typeof types)[number]
 
 export const colors = ['Зеленый', 'Черный', 'Серый'] as const
 export type GridItemColor = (typeof colors)[number]
+
+export type BlockView = 'desktop' | 'mobile'

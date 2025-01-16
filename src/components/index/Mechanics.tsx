@@ -1,4 +1,5 @@
 import type {MechanicsBlock} from '@/lib/sanity'
+import type {BlockView} from '@/lib/types'
 import {BLOCK_BOX, CARD_ROUNDED} from '@/lib/constants'
 
 import {cn} from '@/lib/utils'
@@ -31,7 +32,7 @@ function MechanicsCard({data, idx}: {data: MechanicsBlock; idx: number}) {
     big: 'col-span-7',
   }
 
-  const RenderImage = ({visible}: {visible: 'desktop' | 'mobile'}) => <Image quality={100} className={cn(GRID_CONFIG.big, 'block object-cover w-full h-full rounded-[32px] sm:rounded-2xl', visible === 'desktop' ? 'sm:hidden' : 'hidden sm:block')} src={urlForImage(data.image)} alt={data.heading} width={1000} height={1000} />
+  const RenderImage = ({visible}: {visible: BlockView}) => <Image quality={100} className={cn(GRID_CONFIG.big, 'block object-cover w-full h-full rounded-[32px] sm:rounded-2xl', visible === 'desktop' ? 'sm:hidden' : 'hidden sm:block')} src={urlForImage(data.image)} alt={data.heading} width={1000} height={1000} />
 
   return (
     <div className={cn(GRID_CONFIG.base, 'grid gap-20 xl:gap-5 sm:gap-10 place-items-center', 'sm:flex sm:flex-col')}>
