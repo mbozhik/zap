@@ -24,7 +24,7 @@ export default function Hero({data}: {data: HeroBlock}) {
         <Button to={ACTION_LINK} target="_blank" text="оставить заявку" />
       </div>
 
-      <Image priority={true} quality={100} className="absolute inset-0 block object-cover sm:px-2 sm:static -z-20 size-full sm:rounded-2xl sm:object-right" src={HeroImage} alt="Интерфейс Zap" />
+      <Image priority={true} quality={100} className="absolute inset-0 block object-cover sm:px-2 sm:static -z-20 size-full sm:rounded-2xl sm:object-right" src={HeroImage} alt="Интерфейс ZAP!" />
     </section>
   )
 }
