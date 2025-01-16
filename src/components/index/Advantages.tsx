@@ -1,0 +1,62 @@
+'use client'
+
+import AdvantagesImage1 from '$/advantages/1.jpg'
+import AdvantagesImage2 from '$/advantages/2.jpg'
+import AdvantagesImage3 from '$/advantages/3.jpg'
+
+import type {AdvantagesBlock} from '@/lib/sanity'
+import {BLOCK_BOX, ACTION_LINK} from '@/lib/constants'
+
+import {useState} from 'react'
+import {cn} from '@/lib/utils'
+
+import Image, {type StaticImageData} from 'next/image'
+import {H1, H3, P} from '~/UI/Typography'
+import DynamicIcon from '~/UI/DynamicIcon'
+import Button from '~/UI/Button'
+
+export const CARD_ROUNDED = 'rounded-[32px] xl:rounded-3xl sm:rounded-2xl'
+
+export default function Advantages({data}: {data: AdvantagesBlock[]}) {
+  const [visibleIndex, setVisibleIndex] = useState<number>(0)
+
+  function GridImage({cellClass, src}: {cellClass: string; src: StaticImageData}) {
+    return (
+      <div className={cn(cellClass, 'relative size-full overflow-hidden', CARD_ROUNDED)}>
+        <Image quality={100} fill={true} className="object-cover" src={src} alt="" />
+      </div>
+    )
+  }
+
+  return (
+    <section id="advantages" data-section="advantages-index" className="flex flex-col items-center gap-20 xl:gap-16 sm:gap-8 border-2 border-black rounded-[32px] xl:rounded-3xl sm:rounded-2xl pt-16 pb-20 xl:pt-12 xl:pb-14 sm:py-8">
+      <H1 className="sm:text-center">Почему мы?</H1>
+
+      <div data-section="module-advantages" className={cn(BLOCK_BOX, 'grid-cols-12', 'grid gap-20')}>
+        <div className={cn('col-span-5', 'space-y-4 xl:space-y-3')}>
+          {data.map((item, idx) => (
+            <div key={idx} className={cn('flex flex-col gap-2.5 items-center bg-green px-7 py-4', CARD_ROUNDED)} onClick={() => setVisibleIndex(idx)}>
+              <div className="w-full flex items-center justify-between">
+                <H3>{item.heading}</H3>
+                <DynamicIcon className="size-12" name={item.icon} />
+              </div>
+
+              {visibleIndex === idx && <P>{item.caption}</P>}
+            </div>
+          ))}
+
+          <Button to={ACTION_LINK} className="w-full py-5" text="оставить заявку" />
+        </div>
+
+        <div className={cn('col-span-7', 'grid-cols-5', 'grid gap-4')}>
+          <div className={cn('col-span-3', 'grid-rows-12', 'grid gap-4')}>
+            <GridImage cellClass="row-span-7" src={AdvantagesImage1} />
+            <GridImage cellClass="row-span-5" src={AdvantagesImage2} />
+          </div>
+
+          <GridImage cellClass="col-span-2" src={AdvantagesImage3} />
+        </div>
+      </div>
+    </section>
+  )
+}

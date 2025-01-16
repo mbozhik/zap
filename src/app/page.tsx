@@ -6,10 +6,11 @@ import Hero from '~/index/Hero'
 import Mechanics from '~/index/Mechanics'
 import Description from '~/index/Description'
 import Users from '~/index/Users'
+import Advantages from '~/index/Advantages'
 
 export default async function IndexPage() {
   const pageData: LayoutData = await client.fetch(INDEX_QUERY)
-  const {hero, mechanics} = pageData
+  const {hero, mechanics, advantages} = pageData
 
   return (
     <>
@@ -19,6 +20,7 @@ export default async function IndexPage() {
         <Mechanics data={mechanics} />
         <Description />
         <Users />
+        <Advantages data={advantages} />
       </main>
     </>
   )
