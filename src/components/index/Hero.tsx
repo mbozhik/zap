@@ -18,7 +18,7 @@ export default function Hero({data}: {data: HeroBlock}) {
       <div className={cn(WEBSITE_BOX, 'space-y-7 xl:space-y-6 sm:space-y-4')}>
         <div className="space-y-2.5 xl:space-y-2 sm:space-y-1.5">
           <H1 className="max-w-[20ch]">{heading}</H1>
-          <H4 className="sm:max-w-[22ch]">{caption}</H4>
+          <H4 className="font-medium sm:max-w-[22ch]">{caption}</H4>
         </div>
 
         <Button to={ACTION_LINK} target="_blank" text="оставить заявку" />

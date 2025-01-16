@@ -68,7 +68,7 @@ function GridItem({item, idx}: {item: GridItem; idx: number}) {
   if (item.type === 'Контент') {
     return (
       <div className={cn(cellStyles, 'p-6 xl:p-5 sm:py-6 flex flex-col justify-center gap-2.5')}>
-        {item.heading && <H4 className="font-semibold !leading-[1.3]">{item.heading}</H4>}
+        {item.heading && <H4 className="!leading-[1.3]">{item.heading}</H4>}
         {item.caption && <P className="!leading-[1.4]">{item.caption}</P>}
 
         <DynamicIcon className={cn('absolute top-2 -right-10 size-48', getIconColor(item.background))} name={item.icon} />
