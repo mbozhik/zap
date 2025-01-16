@@ -2,7 +2,7 @@
 
 import {USER_VIEWS, type UserType} from '@/lib/types'
 import {urlForImage, type UsersData, type GridItem} from '@/lib/sanity'
-import {CARD_ROUNDED} from '~/index/Advantages'
+import {CARD_ROUNDED} from '@/lib/constants'
 
 import {useState} from 'react'
 import {twMerge} from 'tailwind-merge'

@@ -1,5 +1,5 @@
 import type {MechanicsBlock} from '@/lib/sanity'
-import {BLOCK_BOX} from '@/lib/constants'
+import {BLOCK_BOX, CARD_ROUNDED} from '@/lib/constants'
 
 import {cn} from '@/lib/utils'
 import {urlForImage} from '@/lib/sanity'
@@ -10,7 +10,7 @@ import Button from '~/UI/Button'
 
 export default function Mechanics({data}: {data: MechanicsBlock[]}) {
   return (
-    <section id="mechanics" data-section="mechanics-index" className="flex flex-col items-center gap-20 xl:gap-16 sm:gap-8 border-2 border-black rounded-[32px] xl:rounded-3xl sm:rounded-2xl pt-16 pb-20 xl:pt-12 xl:pb-14 sm:py-6">
+    <section id="mechanics" data-section="mechanics-index" className={cn('flex flex-col items-center gap-20 xl:gap-16 sm:gap-8 border-2 border-black pt-16 pb-20 xl:pt-12 xl:pb-14 sm:py-6', CARD_ROUNDED)}>
       <H1 className="sm:text-center">Как это работает?</H1>
 
       <div className={cn(BLOCK_BOX, 'space-y-20 sm:space-y-12 sm:px-3')}>

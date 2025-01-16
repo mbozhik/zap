@@ -5,7 +5,7 @@ import AdvantagesImage2 from '$/advantages/2.jpg'
 import AdvantagesImage3 from '$/advantages/3.jpg'
 
 import type {AdvantagesBlock} from '@/lib/sanity'
-import {BLOCK_BOX, ACTION_LINK} from '@/lib/constants'
+import {BLOCK_BOX, ACTION_LINK, CARD_ROUNDED} from '@/lib/constants'
 
 import {useState} from 'react'
 import {cn} from '@/lib/utils'
@@ -14,8 +14,6 @@ import Image, {type StaticImageData} from 'next/image'
 import {H1, H3, P} from '~/UI/Typography'
 import DynamicIcon from '~/UI/DynamicIcon'
 import Button from '~/UI/Button'
-
-export const CARD_ROUNDED = 'rounded-[32px] xl:rounded-3xl sm:rounded-2xl'
 
 export default function Advantages({data}: {data: AdvantagesBlock[]}) {
   const [visibleIndex, setVisibleIndex] = useState<number>(0)
@@ -29,7 +27,7 @@ export default function Advantages({data}: {data: AdvantagesBlock[]}) {
   }
 
   return (
-    <section id="advantages" data-section="advantages-index" className="flex flex-col items-center gap-20 xl:gap-16 sm:gap-8 border-2 border-black rounded-[32px] xl:rounded-3xl sm:rounded-2xl pt-16 pb-20 xl:pt-12 xl:pb-14 sm:py-6">
+    <section id="advantages" data-section="advantages-index" className={cn('flex flex-col items-center gap-20 xl:gap-16 sm:gap-8 border-2 border-black pt-16 pb-20 xl:pt-12 xl:pb-14 sm:py-6', CARD_ROUNDED)}>
       <H1 className="sm:text-center">Почему мы?</H1>
 
       <div data-section="module-advantages" className={cn(BLOCK_BOX, 'grid-cols-12', 'grid gap-20 xl:gap-14', 'sm:flex sm:flex-col-reverse sm:gap-3 sm:px-3')}>
