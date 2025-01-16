@@ -8,6 +8,7 @@ export type LayoutData = {
   mechanics: MechanicsBlock[]
   advantages: AdvantageBlock[]
   reviews: ReviewBlock[]
+  questions: QuestionBlock[]
 }
 
 export type HeroBlock = {
@@ -37,6 +38,13 @@ export type ReviewBlock = {
   text: string
   avatar: ImageProps
 }
+
+export type QuestionBlock = {
+  question: string
+  answer: string
+}
+
+// Пользователи
 
 export type UsersData = {
   type: UserType

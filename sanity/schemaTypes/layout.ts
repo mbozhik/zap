@@ -47,6 +47,13 @@ export const layout = defineType({
       of: [{type: 'itemReview'}],
       validation: (Rule) => Rule.required().min(4),
     }),
+    defineField({
+      name: 'questions',
+      title: 'Вопросы',
+      type: 'array',
+      of: [{type: 'itemQuestion'}],
+      validation: (Rule) => Rule.required().min(2),
+    }),
   ],
   preview: {
     select: {
