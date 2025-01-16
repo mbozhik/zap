@@ -1,5 +1,6 @@
 import type {MechanicsBlock} from '@/lib/sanity'
-import {BLOCK_BOX} from '@/lib/constants'
+import type {BlockView} from '@/lib/types'
+import {BLOCK_BOX, CARD_ROUNDED} from '@/lib/constants'
 
 import {cn} from '@/lib/utils'
 import {urlForImage} from '@/lib/sanity'
@@ -10,7 +11,7 @@ import Button from '~/UI/Button'
 
 export default function Mechanics({data}: {data: MechanicsBlock[]}) {
   return (
-    <section id="mechanics" data-section="mechanics-index" className="flex flex-col items-center gap-20 xl:gap-16 sm:gap-8 border-2 border-black rounded-[32px] sm:rounded-3xl pt-16 pb-20 xl:pt-12 xl:pb-14 sm:py-8">
+    <section id="mechanics" data-section="mechanics-index" className={cn('flex flex-col items-center gap-20 xl:gap-12 sm:gap-8 border-2 border-black pt-16 pb-20 xl:pt-12 xl:pb-14 sm:py-6', CARD_ROUNDED)}>
       <H1 className="sm:text-center">Как это работает?</H1>
 
       <div className={cn(BLOCK_BOX, 'space-y-20 sm:space-y-12 sm:px-3')}>
@@ -31,7 +32,7 @@ function MechanicsCard({data, idx}: {data: MechanicsBlock; idx: number}) {
     big: 'col-span-7',
   }
 
-  const RenderImage = ({visible}: {visible: 'desktop' | 'mobile'}) => <Image quality={100} className={cn(GRID_CONFIG.big, 'block object-cover w-full h-full rounded-[32px] sm:rounded-2xl', visible === 'desktop' ? 'sm:hidden' : 'hidden sm:block')} src={urlForImage(data.image)} alt={data.heading} width={1000} height={1000} />
+  const RenderImage = ({visible}: {visible: BlockView}) => <Image quality={100} className={cn(GRID_CONFIG.big, 'block object-cover w-full h-full rounded-[32px] sm:rounded-2xl', visible === 'desktop' ? 'sm:hidden' : 'hidden sm:block')} src={urlForImage(data.image)} alt={data.heading} width={1000} height={1000} />
 
   return (
     <div className={cn(GRID_CONFIG.base, 'grid gap-20 xl:gap-5 sm:gap-10 place-items-center', 'sm:flex sm:flex-col')}>
@@ -42,7 +43,7 @@ function MechanicsCard({data, idx}: {data: MechanicsBlock; idx: number}) {
         <div className="flex flex-col gap-6 sm:gap-5 sm:flex-row">
           <div className="-mb-3 text-[156px] xl:text-8xl sm:text-6xl font-bold leading-none">{idx + 1}</div>
 
-          <div className="space-y-2 xl:space-y-3">
+          <div className="space-y-3">
             <H2 className="max-w-[10ch] !leading-[1]">{data.heading}</H2>
             <P className="max-w-[30ch] xl:leading-[1.2] sm:leading-[1.25]">{data.caption}</P>
           </div>

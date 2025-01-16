@@ -13,7 +13,7 @@ export default function Header() {
     <header className={cn('fixed z-50 w-full pt-3.5 sm:pt-0', WEBSITE_BOX, 'sm:px-0')}>
       <div className="grid items-center grid-cols-5 sm:flex sm:justify-between p-1.5 sm:py-2 bg-white border-2 border-black rounded-xl sm:border-none">
         <div className="pl-2 sm:pl-1">
-          <Image className="w-28 sm:w-20" src={LogoImage} alt="Логотип Zap" />
+          <Image className="w-28 sm:w-20" src={LogoImage} alt="Логотип ZAP!" />
         </div>
 
         <nav className="flex col-span-3 gap-6 justify-self-center sm:hidden">
