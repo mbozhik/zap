@@ -14,6 +14,7 @@ export const typoClasses = {
   h3: 'text-[40px] xl:text-3xl sm:text-2xl font-bold',
   h4: 'text-[28px] xl:text-2xl sm:text-xl tracking-[-0.04em] font-medium',
   p: 'text-xl xl:text-lg sm:text-lg',
+  span: 'text-base',
 } as const
 
 function Typography({type, className, children}: Props) {
@@ -36,3 +37,4 @@ export const H2 = createTypography('h2')
 export const H3 = createTypography('h3')
 export const H4 = createTypography('h4')
 export const P = createTypography('p')
+export const SPAN = createTypography('span')

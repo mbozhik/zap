@@ -27,7 +27,7 @@ export default function Advantages({data}: {data: AdvantageBlock[]}) {
   }
 
   return (
-    <section id="advantages" data-section="advantages-index" className={cn('flex flex-col items-center gap-20 xl:gap-16 sm:gap-8 border-2 border-black pt-16 pb-20 xl:pt-12 xl:pb-14 sm:py-6', CARD_ROUNDED)}>
+    <section id="advantages" data-section="advantages-index" className={cn('flex flex-col items-center gap-20 xl:gap-12 sm:gap-8 border-2 border-black pt-16 pb-20 xl:pt-12 xl:pb-14 sm:py-6', CARD_ROUNDED)}>
       <H1 className="sm:text-center">Почему мы?</H1>
 
       <div data-section="module-advantages" className={cn(BLOCK_BOX, 'grid-cols-12', 'grid gap-20 xl:gap-14', 'sm:flex sm:flex-col-reverse sm:gap-3 sm:px-3')}>
