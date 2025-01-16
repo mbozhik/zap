@@ -6,7 +6,8 @@ import type {IconName} from 'lucide-react/dynamic'
 export type LayoutData = {
   hero: HeroBlock
   mechanics: MechanicsBlock[]
-  advantages: AdvantagesBlock[]
+  advantages: AdvantageBlock[]
+  reviews: ReviewBlock[]
 }
 
 export type HeroBlock = {
@@ -24,10 +25,17 @@ export type MechanicsBlock = {
   }[]
 }
 
-export type AdvantagesBlock = {
+export type AdvantageBlock = {
   heading: string
   caption: string
   icon: IconName
+}
+
+export type ReviewBlock = {
+  name: string
+  role: string
+  text: string
+  avatar: ImageProps
 }
 
 export type UsersData = {

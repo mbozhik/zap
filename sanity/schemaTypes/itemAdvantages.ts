@@ -25,4 +25,10 @@ export const itemAdvantages = defineType({
       validation: (Rule) => Rule.required(),
     },
   ],
+  preview: {
+    select: {
+      title: 'heading',
+      subtitle: 'caption',
+    },
+  },
 })

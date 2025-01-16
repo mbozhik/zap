@@ -4,5 +4,14 @@ import {itemMechanics} from './itemMechanics'
 import {users} from './users'
 import {itemGrid} from './itemGrid'
 import {itemAdvantages} from './itemAdvantages'
+import {itemReview} from './itemReview'
 
-export const schemaTypes = [layout, itemHero, itemMechanics, users, itemGrid, itemAdvantages]
+export const schemaTypes = [
+  layout,
+  itemHero,
+  itemMechanics,
+  users,
+  itemGrid,
+  itemAdvantages,
+  itemReview,
+]

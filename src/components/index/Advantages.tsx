@@ -4,7 +4,7 @@ import AdvantagesImage1 from '$/advantages/1.jpg'
 import AdvantagesImage2 from '$/advantages/2.jpg'
 import AdvantagesImage3 from '$/advantages/3.jpg'
 
-import type {AdvantagesBlock} from '@/lib/sanity'
+import type {AdvantageBlock} from '@/lib/sanity'
 import {BLOCK_BOX, ACTION_LINK, CARD_ROUNDED} from '@/lib/constants'
 
 import {useState} from 'react'
@@ -15,7 +15,7 @@ import {H1, H3, P} from '~/UI/Typography'
 import DynamicIcon from '~/UI/DynamicIcon'
 import Button from '~/UI/Button'
 
-export default function Advantages({data}: {data: AdvantagesBlock[]}) {
+export default function Advantages({data}: {data: AdvantageBlock[]}) {
   const [visibleIndex, setVisibleIndex] = useState<number>(0)
 
   function GridImage({cellClass, src}: {cellClass: string; src: StaticImageData}) {
