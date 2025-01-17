@@ -20,11 +20,11 @@ const SOCIALS = {
   },
   whatsapp: {
     icon: WhatsAppLogo,
-    link: 'https://web.whatsapp.com', // https://web.whatsapp.com
+    link: 'https://https://wa.me/79151690543',
   },
   email: {
     icon: EmailLogo,
-    link: 'mailto:kirill@asseal.ae',
+    link: 'mailto:support@zapdelivery.ae',
   },
 }
 
@@ -51,13 +51,13 @@ export default function Footer() {
         <Image className={cn('sm:hidden', 'w-[27vw] xl:w-[30vw]')} src={LogoBigImage} alt="Логотип ZAP!" />
 
         <div className="sm:!mt-2 flex sm:flex-wrap gap-14 xl:gap-10 sm:gap-x-6 sm:gap-y-3.5 text-black/40">
-          <Link className={linkStyles} href="#privacy-policy">
+          {/* <Link className={linkStyles} href="#privacy-policy">
             <P>Privacy Policy</P>
           </Link>
 
           <Link className={linkStyles} href="#terms-conditions">
             <P>Terms & Conditions</P>
-          </Link>
+          </Link> */}
 
           <P>
             2024. © Zap! by{' '}
