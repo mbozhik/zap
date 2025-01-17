@@ -32,7 +32,7 @@ export default function Footer() {
   const linkStyles = 'size-fit text-right border-b border-black/40 hover:border-transparent duration-200'
 
   return (
-    <footer className={cn(WEBSITE_BOX, 'relative flex sm:flex-col items-end sm:items-start justify-between sm:gap-6', 'pt-16 pb-8 xl:pt-12 xl:pb-5 sm:pt-5 sm:pb-[25vh]', 'border-t-2 border-black')}>
+    <footer id="contacts" className={cn(WEBSITE_BOX, 'relative flex sm:flex-col items-end sm:items-start justify-between sm:gap-6', 'pt-16 pb-8 xl:pt-12 xl:pb-5 sm:pt-5 sm:pb-[25vh]', 'border-t-2 border-black')}>
       <Image className={cn('hidden sm:block', 'sm:w-[60vw]')} src={LogoBigImage} alt="Логотип ZAP!" />
 
       <div className="space-y-3 sm:space-y-2">
