@@ -1,3 +1,14 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+#mechanics,
+#advantages,
+#faq,
+#contacts {
+  @apply scroll-mt-14;
+}
+
+#description {
+  @apply scroll-mt-28;
+}

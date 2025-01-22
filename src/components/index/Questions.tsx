@@ -9,7 +9,7 @@ import Button from '~/UI/Button'
 
 export default function Questions({data}: {data: QuestionBlock[]}) {
   return (
-    <section data-section="questions-index" className={cn(BLOCK_BOX, 'flex flex-col items-center gap-20 xl:gap-12 sm:gap-8 pt-12 xl:pt-8 sm:pt-0')}>
+    <section id="faq" data-section="questions-index" className={cn(BLOCK_BOX, 'flex flex-col items-center gap-20 xl:gap-12 sm:gap-8 pt-12 xl:pt-8 sm:pt-0')}>
       <H1 className="sm:text-center">FAQ</H1>
 
       <div className="flex flex-col gap-4 xl:gap-3 w-full">
