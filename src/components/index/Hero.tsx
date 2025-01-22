@@ -21,7 +21,7 @@ export default function Hero({data}: {data: HeroBlock}) {
           <H4 className="font-medium sm:max-w-[22ch]">{caption}</H4>
         </div>
 
-        <Button to={ACTION_LINK} target="_blank" text="оставить заявку" />
+        <Button to={ACTION_LINK} text="оставить заявку" />
       </div>
 
       <Image priority={true} quality={100} className="absolute inset-0 block object-cover sm:px-2 sm:static -z-20 size-full sm:rounded-2xl sm:object-right" src={HeroImage} alt="Интерфейс ZAP!" />

@@ -19,14 +19,14 @@ export default function Header() {
         <nav className="flex col-span-3 gap-6 justify-self-center sm:hidden">
           {Object.entries(HEADER_LINKS).map(([key, label]) => {
             return (
-              <Link href={`/#${key}`} className="block duration-200 border-b border-transparent hover:border-black" key={key}>
+              <Link href={`/#${key}`} className="block lowercase duration-200 border-b border-transparent hover:border-black" key={key}>
                 <P>{label}</P>
               </Link>
             )
           })}
         </nav>
 
-        <Button className="px-8 xl:px-6 justify-self-end sm:text-base sm:px-4 sm:py-2" to={ACTION_LINK} target="_blank" text="оставить заявку" />
+        <Button to={ACTION_LINK} className="px-8 xl:px-6 justify-self-end sm:text-base sm:px-4 sm:py-2" text="оставить заявку" />
       </div>
     </header>
   )

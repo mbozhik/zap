@@ -6,8 +6,8 @@ export const HEADER_LINKS = {
   mechanics: 'как это работает',
   description: 'о нас',
   advantages: 'почему мы',
-  faq: 'FAQ',
-  contacts: 'Контакты',
+  faq: 'faq',
+  contacts: 'контакты',
 }
 
 export const ACTION_LINK = 'https://t.me/zap_miniapp_bot'

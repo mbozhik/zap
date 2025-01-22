@@ -29,7 +29,7 @@ export default function Questions({data}: {data: QuestionBlock[]}) {
         <div className="flex sm:flex-col sm:gap-3.5 items-center justify-between p-2.5 pl-6 sm:pl-2.5 bg-black rounded-xl">
           <H4 className="text-white sm:text-center sm:max-w-[20ch] sm:leading-[1.25]">Остались вопросы? Напишите нам</H4>
 
-          <Button className={cn('px-28 xl:px-16 py-4 bg-green text-black', 'sm:w-full sm:py-2')} to={ACTION_LINK} text="связаться с нами" />
+          <Button to={ACTION_LINK} className={cn('px-28 xl:px-16 py-4 bg-green text-black', 'sm:w-full sm:py-2')} text="связаться с нами" />
         </div>
       </div>
     </section>

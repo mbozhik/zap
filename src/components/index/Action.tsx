@@ -34,7 +34,7 @@ export default function Action() {
 
         <ActionImageElem visible="mobile" />
 
-        <Button className="sm:w-full" to={ACTION_LINK} text="оставить заявку" />
+        <Button to={ACTION_LINK} className="sm:w-full" text="оставить заявку" />
       </div>
 
       <ActionImageElem visible="desktop" />
