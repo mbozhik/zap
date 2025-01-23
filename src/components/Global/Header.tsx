@@ -49,7 +49,7 @@ export default function Header() {
           })}
         </nav>
 
-        <Button to={ACTION_LINK} className="px-8 xl:px-6 justify-self-end sm:text-base sm:px-4 sm:py-2" text="оставить заявку" />
+        <Button animated={false} to={ACTION_LINK} className="px-6 xl:px-4 justify-self-end sm:text-base sm:px-3 sm:py-2" text="оставить заявку" />
       </motion.div>
     </header>
   )
