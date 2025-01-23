@@ -12,7 +12,9 @@ import Button from '~/UI/Button'
 export default function Mechanics({data}: {data: MechanicsBlock[]}) {
   return (
     <section id="mechanics" data-section="mechanics-index" className={cn('flex flex-col items-center gap-20 xl:gap-12 sm:gap-8 border-2 border-black pt-16 pb-20 xl:pt-12 xl:pb-14 sm:py-6', CARD_ROUNDED)}>
-      <H1 className="sm:text-center">Как это работает?</H1>
+      <H1 animated offset={250} className="sm:text-center">
+        Как это работает?
+      </H1>
 
       <div className={cn(BLOCK_BOX, 'space-y-20 sm:space-y-12 sm:px-3')}>
         {data.map((item, index) => (
@@ -44,8 +46,12 @@ function MechanicsCard({data, idx}: {data: MechanicsBlock; idx: number}) {
           <div className="-mb-3 text-[156px] xl:text-8xl sm:text-6xl font-bold leading-none">{idx + 1}</div>
 
           <div className="space-y-3">
-            <H2 className="max-w-[10ch] !leading-[1]">{data.heading}</H2>
-            <P className="max-w-[30ch] xl:leading-[1.2] sm:leading-[1.25]">{data.caption}</P>
+            <H2 animated className="max-w-[10ch] !leading-[1]">
+              {data.heading}
+            </H2>
+            <P animated by="word" className="max-w-[30ch] xl:leading-[1.2] sm:leading-[1.25]">
+              {data.caption}
+            </P>
           </div>
         </div>
 

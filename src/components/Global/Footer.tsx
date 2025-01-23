@@ -36,7 +36,9 @@ export default function Footer() {
       <Image className={cn('hidden sm:block', 'sm:w-[60vw]')} src={LogoBigImage} alt="Логотип ZAP!" />
 
       <div className="space-y-3 sm:space-y-2">
-        <H4>Напишите нам!</H4>
+        <H4 animated offset={0}>
+          Напишите нам!
+        </H4>
 
         <div className="flex gap-2.5">
           {Object.entries(SOCIALS).map(([key, {icon, link}]) => (
