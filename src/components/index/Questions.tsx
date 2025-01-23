@@ -26,12 +26,12 @@ export default function Questions({data}: {data: QuestionBlock[]}) {
           </AccordionItem>
         ))}
 
-        <div className="flex sm:flex-col sm:gap-3.5 items-center justify-between p-2.5 pl-6 sm:pl-2.5 bg-black rounded-xl">
-          <H4 animated className="text-white sm:text-center sm:max-w-[20ch] sm:leading-[1.25]">
+        <div className="flex sm:flex-col sm:gap-3.5 items-center justify-between p-2.5 sm:pt-3 pl-6 sm:pl-2.5 bg-black rounded-xl">
+          <H4 animated className="text-white sm:font-medium sm:text-center sm:max-w-[20ch] sm:leading-[1.25]">
             Остались вопросы? Напишите нам
           </H4>
 
-          <Button to={ACTION_LINK} className={cn('px-28 xl:px-16 py-4 bg-green text-black', 'sm:w-full sm:py-2')} text="связаться с нами" />
+          <Button to={ACTION_LINK} className={cn('px-28 xl:px-16 py-4 xl:py-3 bg-green text-black border-black hover:bg-white', 'sm:w-full sm:py-1.5')} text="связаться с нами" />
         </div>
       </Accordion>
     </section>

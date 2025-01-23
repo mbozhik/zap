@@ -66,7 +66,7 @@ export default function Advantages({data}: {data: AdvantageBlock[]}) {
             </div>
           ))}
 
-          <Button to={ACTION_LINK} className="w-full py-5" text="оставить заявку" />
+          <Button to={ACTION_LINK} className="w-full py-5 xl:py-3.5 rounded-xl xl:rounded-lg" text="оставить заявку" />
         </div>
 
         <div className={cn('col-span-7', 'grid-cols-5 sm:grid-cols-1 min-h-[75vh] xl:min-h-[80vh] sm:min-h-0', 'grid gap-4 xl:gap-3')}>

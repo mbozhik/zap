@@ -2,6 +2,7 @@ import {BLOCK_BOX, ACTION_LINK} from '@/lib/constants'
 
 import {H2} from '~/UI/Typography'
 import Button from '~/UI/Button'
+import {m} from '@/lib/utils'
 
 export default function Description() {
   return (
@@ -10,7 +11,7 @@ export default function Description() {
         Zap! соединяет отправителей, которым нужно срочно доставить документ в другую страну, и путешественников, которые летят тем же маршрутом.{' '}
       </H2>
 
-      <Button to={ACTION_LINK} className="w-full col-span-3 py-6 xl:py-4" text="присоединиться" />
+      <Button to={ACTION_LINK} className={m('col-span-3', 'w-full py-6 xl:py-3.5 rounded-xl xl:rounded-lg')} text="присоединиться" />
     </section>
   )
 }

@@ -17,6 +17,7 @@ type Props = {
 }
 
 export const buttonStyles = cn(typoClasses.p, 'block size-fit px-14 xl:px-12 sm:px-6 py-2.5 xl:py-2 sm:py-2.5', 'lowercase text-center rounded-lg text-white bg-black border-2 border-transparent')
+const buttonHover = 'hover:text-black hover:bg-green hover:border-black transition-colors duration-300'
 
 export default function Button({to, text, className, onClick, animated = true}: Props) {
   const ref = useRef<HTMLButtonElement>(null)
@@ -55,7 +56,7 @@ export default function Button({to, text, className, onClick, animated = true}: 
 
   if (!isDesktop) {
     return (
-      <button className={cn('relative', buttonStyles, className)} ref={ref} onClick={handleClick}>
+      <button className={cn('relative', buttonStyles, buttonHover, className)} ref={ref} onClick={handleClick}>
         {text}
       </button>
     )
@@ -63,13 +64,13 @@ export default function Button({to, text, className, onClick, animated = true}: 
 
   if (animated) {
     return (
-      <motion.button className={cn('relative', buttonStyles, className)} ref={ref} transition={{type: 'spring', stiffness: 80, damping: 20, mass: 0.5}} onMouseMove={handleMouse} onMouseLeave={reset} onClick={handleClick} animate={{x, y}}>
+      <motion.button className={cn('relative', buttonStyles, buttonHover, className)} ref={ref} transition={{type: 'spring', stiffness: 80, damping: 20, mass: 0.5}} onMouseMove={handleMouse} onMouseLeave={reset} onClick={handleClick} animate={{x, y}}>
         {text}
       </motion.button>
     )
   } else {
     return (
-      <button className={cn('relative', buttonStyles, className)} ref={ref} onClick={handleClick}>
+      <button className={cn('relative', buttonStyles, buttonHover, className)} ref={ref} onClick={handleClick}>
         {text}
       </button>
     )
