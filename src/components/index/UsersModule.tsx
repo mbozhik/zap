@@ -3,35 +3,50 @@
 import {USER_VIEWS, type UserType} from '@/lib/types'
 import {urlForImage, type UsersData, type GridItem} from '@/lib/sanity'
 import {CARD_ROUNDED} from '@/lib/constants'
+import {buttonStyles} from '~/UI/Button'
 
+import {cn} from '@/lib/utils'
 import {useState} from 'react'
 import {twMerge} from 'tailwind-merge'
-import {cn} from '@/lib/utils'
+import {AnimatePresence, motion} from 'motion/react'
 
 import Image from 'next/image'
-import Button from '~/UI/Button'
 import {H4, P} from '~/UI/Typography'
 import DynamicIcon from '~/UI/DynamicIcon'
+
+const transition = {duration: 0.3, ease: 'easeInOut'}
+const variants = {
+  enter: {opacity: 0, y: -30, filter: 'blur(4px)'},
+  center: {opacity: 1, y: 0, filter: 'blur(0px)'},
+  exit: {opacity: 0, y: 30, filter: 'blur(4px)'},
+}
 
 export default function UsersModule({data}: {data: UsersData[]}) {
   const [activeView, setActiveView] = useState<UserType>('Отправителям')
 
+  const activeIndex = USER_VIEWS.indexOf(activeView)
   const activeData = data.find((item) => item.type === activeView)
 
   return (
     <section data-section="module-users" className="space-y-4">
-      <div data-section="switch-module" className="flex sm:flex-col gap-2">
-        {USER_VIEWS.map((view) => (
-          <Button key={view} className={cn('hover:bg-black sm:w-full', activeView === view ? '' : 'bg-black/20 text-black hover:text-white')} onClick={() => setActiveView(view)} text={view} />
+      <div data-section="switch-module" className="flex sm:flex-row gap-2 sm:gap-1">
+        {USER_VIEWS.map((view, idx) => (
+          <button key={idx} onClick={() => setActiveView(view)} className={cn(buttonStyles, idx == 1 && 'sm:w-full', 'px-10 xl:px-10 sm:px-5 sm:text-sm sm:py-3 duration-300', activeView === view ? '' : 'bg-black/20 text-black hover:bg-black/30')}>
+            {view}
+          </button>
         ))}
       </div>
 
-      <div data-section="grid-module">
-        <div className={twMerge('grid grid-cols-12 auto-rows-fr gap-4 xl:gap-3 min-h-[65vh] sm:min-h-full', 'sm:flex sm:flex-col')}>
-          {activeData?.grid.map((item, index) => (
-            <GridItem item={item} idx={index} key={index} /> // Dynamic component
-          ))}
-        </div>
+      <div data-section="grid-module" className="overflow-hidden">
+        <AnimatePresence initial={false} mode="popLayout">
+          <motion.div key={activeIndex} initial="enter" animate="center" exit="exit" variants={variants} transition={transition}>
+            <div className={twMerge('grid grid-cols-12 auto-rows-fr gap-4 xl:gap-3 min-h-[65vh] sm:min-h-full', 'sm:flex sm:flex-col')}>
+              {activeData?.grid.map(
+                (item, key) => <GridItem item={item} idx={key} key={key} />, // Dynamic component
+              )}
+            </div>
+          </motion.div>
+        </AnimatePresence>
       </div>
     </section>
   )
@@ -46,7 +61,6 @@ function GridItem({item, idx}: {item: GridItem; idx: number}) {
       'col-span-4', // Bottom-left
       'col-span-3', // Bottom-middle
     ]
-
     return gridSpanClasses[idx % gridSpanClasses.length]
   }
 
@@ -58,9 +72,9 @@ function GridItem({item, idx}: {item: GridItem; idx: number}) {
   }
 
   function getIconColor(background?: string) {
-    if (background === 'Зеленый') return 'text-black/10'
-    if (background === 'Черный') return 'text-white/10'
-    if (background === 'Серый') return 'text-black/10'
+    if (background === 'Зеленый') return 'text-black opacity-10'
+    if (background === 'Черный') return 'text-white opacity-10'
+    if (background === 'Серый') return 'text-black opacity-10'
   }
 
   const cellStyles = twMerge('relative overflow-hidden', CARD_ROUNDED, getBackgroundColor(item.background), getGridClass(idx))

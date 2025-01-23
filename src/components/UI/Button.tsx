@@ -1,7 +1,7 @@
 'use client'
 
 import {typoClasses} from '~/UI/Typography'
-import {cn} from '@/lib/utils'
+import {cn, m} from '@/lib/utils'
 import {useRef, useState} from 'react'
 import {motion} from 'motion/react'
 import {useRouter} from 'next/navigation'
@@ -12,6 +12,8 @@ type Props = {
   className?: string
   onClick?: () => void
 }
+
+export const buttonStyles = m(typoClasses.p, 'block size-fit px-14 xl:px-12 sm:px-6 py-3 sm:py-3.5 xl:py-2.5 lowercase text-center text-white bg-black rounded-lg')
 
 export default function Button({to, text, className, onClick}: Props) {
   const ref = useRef<HTMLButtonElement>(null)
@@ -46,10 +48,8 @@ export default function Button({to, text, className, onClick}: Props) {
 
   const {x, y} = position
 
-  const buttonStyles = 'block size-fit px-14 xl:px-12 sm:px-6 py-3 sm:py-3.5 xl:py-2.5 lowercase text-center text-white bg-black rounded-lg'
-
   return (
-    <motion.button className={cn('relative', buttonStyles, typoClasses.p, className)} ref={ref} transition={{type: 'spring', stiffness: 80, damping: 25, mass: 0.5}} onMouseMove={handleMouse} onMouseLeave={reset} onClick={handleClick} animate={{x, y}}>
+    <motion.button className={cn('relative', buttonStyles, className)} ref={ref} transition={{type: 'spring', stiffness: 80, damping: 20, mass: 0.5}} onMouseMove={handleMouse} onMouseLeave={reset} onClick={handleClick} animate={{x, y}}>
       {text}
     </motion.button>
   )
