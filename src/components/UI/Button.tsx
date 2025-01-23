@@ -2,9 +2,11 @@
 
 import {typoClasses} from '~/UI/Typography'
 import {cn, m} from '@/lib/utils'
+
 import {useRef, useState} from 'react'
 import {motion} from 'motion/react'
 import {useRouter} from 'next/navigation'
+import {useMediaQuery} from '@/lib/use-media-query'
 
 type Props = {
   to?: string
@@ -19,6 +21,8 @@ export default function Button({to, text, className, onClick}: Props) {
   const ref = useRef<HTMLButtonElement>(null)
   const [position, setPosition] = useState<{x: number; y: number}>({x: 0, y: 0})
   const router = useRouter()
+
+  const isDesktop = useMediaQuery('(min-width: 768px)')
 
   const handleMouse = (e: React.MouseEvent<HTMLButtonElement>) => {
     if (ref.current) {
@@ -48,9 +52,17 @@ export default function Button({to, text, className, onClick}: Props) {
 
   const {x, y} = position
 
-  return (
-    <motion.button className={cn('relative', buttonStyles, className)} ref={ref} transition={{type: 'spring', stiffness: 80, damping: 20, mass: 0.5}} onMouseMove={handleMouse} onMouseLeave={reset} onClick={handleClick} animate={{x, y}}>
-      {text}
-    </motion.button>
-  )
+  if (isDesktop) {
+    return (
+      <motion.button className={cn('relative', buttonStyles, className)} ref={ref} transition={{type: 'spring', stiffness: 80, damping: 20, mass: 0.5}} onMouseMove={handleMouse} onMouseLeave={reset} onClick={handleClick} animate={{x, y}}>
+        {text}
+      </motion.button>
+    )
+  } else {
+    return (
+      <button className={cn('relative', buttonStyles, className)} ref={ref} onClick={handleClick}>
+        {text}
+      </button>
+    )
+  }
 }
