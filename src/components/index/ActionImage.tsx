@@ -66,7 +66,7 @@ export default function ActionImage({visible}: {visible: BlockView}) {
           rotateX,
           rotateY,
         }}
-        className={cn('col-span-6 relative', IMAGE_STYLES.visibility.desktop)}
+        className={cn('col-span-6 xl:ml-14 sm:ml-0 relative', IMAGE_STYLES.visibility.desktop)}
       >
         <Image
           priority={true}
