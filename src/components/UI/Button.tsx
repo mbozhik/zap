@@ -15,7 +15,7 @@ type Props = {
   onClick?: () => void
 }
 
-export const buttonStyles = m(typoClasses.p, 'block size-fit px-14 xl:px-12 sm:px-6 py-3 sm:py-3.5 xl:py-2.5 lowercase text-center text-white bg-black rounded-lg')
+export const buttonStyles = m(typoClasses.p, 'block size-fit px-14 xl:px-12 sm:px-6 py-2.5 xl:py-2 sm:py-2.5', 'lowercase text-center rounded-lg text-white bg-black border-2 border-transparent', 'hover:text-black hover:bg-green hover:border-black transition-colors duration-300')
 
 export default function Button({to, text, className, onClick}: Props) {
   const ref = useRef<HTMLButtonElement>(null)
