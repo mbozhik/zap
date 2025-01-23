@@ -5,10 +5,12 @@ import Button from '~/UI/Button'
 
 export default function Description() {
   return (
-    <section id="description" data-section="description-index" className={`grid sm:flex sm:flex-col grid-cols-10 gap-16 sm:gap-4 items-center ${BLOCK_BOX}`}>
-      <H2 className="col-span-7">Zap! соединяет отправителей, которым нужно срочно доставить документ в другую страну, и путешественников, которые летят тем же маршрутом. </H2>
+    <section id="description" data-section="description-index" className={`grid sm:flex sm:flex-col grid-cols-10 gap-12 sm:gap-4 items-center ${BLOCK_BOX}`}>
+      <H2 animated offset={250} by="word" className="col-span-7">
+        Zap! соединяет отправителей, которым нужно срочно доставить документ в другую страну, и путешественников, которые летят тем же маршрутом.{' '}
+      </H2>
 
-      <Button to={ACTION_LINK} className="w-full col-span-3 py-6" text="присоединиться" />
+      <Button to={ACTION_LINK} className="w-full col-span-3 py-6 xl:py-4" text="присоединиться" />
     </section>
   )
 }

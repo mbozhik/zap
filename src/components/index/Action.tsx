@@ -30,7 +30,9 @@ export default function Action() {
   return (
     <section data-section="action-index" className={cn('grid-cols-10', 'grid items-center xl:gap-20', 'sm:flex sm:flex-col')}>
       <div className={cn('col-span-4', 'space-y-6 xl:space-y-5 sm:space-y-6')}>
-        <H1 className="!leading-[1.05]">Отправляйте документы с&nbsp;ZAP!</H1>
+        <H1 animated by="word" offset={250} className="!leading-[1.05]">
+          Отправляйте документы с&nbsp;ZAP!
+        </H1>
 
         <ActionImageElem visible="mobile" />
 

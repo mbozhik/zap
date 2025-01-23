@@ -15,12 +15,18 @@ export default function ReviewsModule({items}: {items: ReviewBlock[]}) {
               <Image className="block size-12 object-cover rounded-full" src={urlForImage(review.avatar)} alt={review.name} width={250} height={250} />
 
               <div className="space-y-1.5">
-                <H4 className="!leading-none">{review.name}</H4>
-                <SPAN className="text-black/60">{review.role}</SPAN>
+                <H4 animated className="!leading-none">
+                  {review.name}
+                </H4>
+                <SPAN animated className="text-black/60">
+                  {review.role}
+                </SPAN>
               </div>
             </div>
 
-            <P className="!leading-[1.3]">{review.text}</P>
+            <P animated className="!leading-[1.3]">
+              {review.text}
+            </P>
           </div>
         ))}
       </div>

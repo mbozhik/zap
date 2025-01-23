@@ -3,6 +3,7 @@
 import {cn} from '@/lib/utils'
 import React from 'react'
 import {motion} from 'motion/react'
+import {useMediaQuery} from '@/lib/use-media-query'
 
 type Props = {
   type: TypoTypes
@@ -24,7 +25,9 @@ export const typoClasses = {
   span: 'text-base',
 } as const
 
-function Typography({type, className, children, animated = false, by = 'line', offset = 250}: Props) {
+function Typography({type, className, children, animated = false, by = 'line', offset = 150}: Props) {
+  const isDesktop = useMediaQuery('(min-width: 768px)')
+
   const Element = type
 
   const renderAnimatedText = () => {
@@ -48,8 +51,8 @@ function Typography({type, className, children, animated = false, by = 'line', o
         y: 0,
         transition: {
           type: 'spring',
-          damping: 12,
-          stiffness: 100,
+          damping: by === 'word' ? 20 : 12,
+          stiffness: by === 'word' ? 300 : 100,
         },
       },
       hidden: {
@@ -57,8 +60,8 @@ function Typography({type, className, children, animated = false, by = 'line', o
         y: 20,
         transition: {
           type: 'spring',
-          damping: 12,
-          stiffness: 100,
+          damping: by === 'word' ? 20 : 12,
+          stiffness: by === 'word' ? 300 : 100,
         },
       },
     }
@@ -72,7 +75,7 @@ function Typography({type, className, children, animated = false, by = 'line', o
         variants={container}
         initial="hidden"
         whileInView="visible" // Trigger animation when in view
-        viewport={{once: true, margin: `-${offset}px 0px`}}
+        viewport={{once: true, margin: `-${isDesktop ? offset : '50'}px 0px`}}
         className={combinedClassName}
       >
         {React.createElement(
