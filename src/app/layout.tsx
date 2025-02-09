@@ -1,7 +1,6 @@
-import {siteMetadata, montserrat} from '@/lib/layout-config'
+export {metadata} from '@/lib/layout-config'
+import {montserrat} from '@/lib/layout-config'
 import './globals.css'
-
-export const metadata = siteMetadata
 
 import YandexMetrika from '~/Global/Analytics'
 import Header from '~/Global/Header'
