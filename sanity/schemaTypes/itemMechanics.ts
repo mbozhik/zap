@@ -1,23 +1,23 @@
-import {defineType, defineField} from 'sanity'
+import {defineType, defineField, Rule} from 'sanity'
+import {getLocaleVersion} from './index'
 
 export const itemMechanics = defineType({
   name: 'itemMechanics',
   title: 'Элемент механик',
   type: 'object',
   fields: [
-    {
+    defineField({
       name: 'heading',
       title: 'Заголовок',
-      type: 'string',
-      validation: (Rule) => Rule.required(),
-    },
-    {
+      type: 'internationalizedArrayString',
+      validation: (rule: Rule) => rule.required(),
+    }),
+    defineField({
       name: 'caption',
       title: 'Подпись',
-      type: 'text',
-      rows: 2,
-      validation: (Rule) => Rule.required(),
-    },
+      type: 'internationalizedArrayExtraText',
+      validation: (rule: Rule) => rule.required(),
+    }),
     {
       name: 'image',
       title: 'Изображение',
@@ -34,12 +34,12 @@ export const itemMechanics = defineType({
           title: 'Элемент действия',
           type: 'object',
           fields: [
-            {
+            defineField({
               name: 'label',
               title: 'Метка',
-              type: 'string',
-              validation: (Rule) => Rule.required(),
-            },
+              type: 'internationalizedArrayString',
+              validation: (rule: Rule) => rule.required(),
+            }),
             {
               name: 'action',
               title: 'Действие',
@@ -47,6 +47,20 @@ export const itemMechanics = defineType({
               validation: (Rule) => Rule.required(),
             },
           ],
+          preview: {
+            select: {
+              title: 'label',
+              subtitle: 'action',
+            },
+            prepare(selection) {
+              const {title, subtitle} = selection
+
+              return {
+                title: getLocaleVersion(title),
+                subtitle,
+              }
+            },
+          },
         }),
       ],
       validation: (Rule) => Rule.min(1).max(1),
@@ -57,6 +71,16 @@ export const itemMechanics = defineType({
       title: 'heading',
       subtitle: 'caption',
       media: 'image',
+    },
+
+    prepare(selection) {
+      const {title, subtitle, media} = selection
+
+      return {
+        title: getLocaleVersion(title),
+        subtitle: getLocaleVersion(subtitle),
+        media,
+      }
     },
   },
 })

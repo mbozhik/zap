@@ -1,16 +1,17 @@
-import {defineType} from 'sanity'
+import {defineType, defineField, Rule} from 'sanity'
+import {getLocaleVersion} from './index'
 
 export const itemReview = defineType({
   name: 'itemReview',
   title: 'Элемент отзыва',
   type: 'object',
   fields: [
-    {
+    defineField({
       name: 'name',
       title: 'Имя',
-      type: 'string',
-      validation: (Rule) => Rule.required(),
-    },
+      type: 'internationalizedArrayString',
+      validation: (rule: Rule) => rule.required(),
+    }),
     {
       name: 'role',
       title: 'Роль',
@@ -20,13 +21,12 @@ export const itemReview = defineType({
       type: 'string',
       validation: (Rule) => Rule.required(),
     },
-    {
+    defineField({
       name: 'text',
       title: 'Текст',
-      type: 'text',
-      rows: 3,
-      validation: (Rule) => Rule.required(),
-    },
+      type: 'internationalizedArrayExtraText',
+      validation: (rule: Rule) => rule.required(),
+    }),
     {
       name: 'avatar',
       title: 'Изображение',
@@ -39,6 +39,16 @@ export const itemReview = defineType({
       title: 'name',
       subtitle: 'role',
       media: 'avatar',
+    },
+
+    prepare(selection) {
+      const {title, subtitle, media} = selection
+
+      return {
+        title: getLocaleVersion(title),
+        subtitle: getLocaleVersion(subtitle),
+        media,
+      }
     },
   },
 })

@@ -1,4 +1,5 @@
-import {defineType, Rule, isDev, defineField} from 'sanity'
+import {defineType, defineField, Rule, isDev} from 'sanity'
+import {getLocaleVersion} from './index'
 
 import {types, colors} from '../../src/lib/types'
 
@@ -19,19 +20,18 @@ export const itemGrid = defineType({
       readOnly: !isDev,
     },
 
-    {
+    defineField({
       name: 'heading',
       title: 'Заголовок',
-      type: 'string',
+      type: 'internationalizedArrayString',
       hidden: ({parent}) => parent?.type !== 'Контент',
-    },
-    {
+    }),
+    defineField({
       name: 'caption',
       title: 'Подпись',
-      type: 'text',
-      rows: 3,
+      type: 'internationalizedArrayExtraText',
       hidden: ({parent}) => parent?.type !== 'Контент',
-    },
+    }),
     {
       name: 'background',
       title: 'Задний фон',
@@ -65,18 +65,21 @@ export const itemGrid = defineType({
       hidden: ({parent}) => parent?.type !== 'Изображение',
     }),
   ],
+
   preview: {
     select: {
-      heading: 'heading',
-      type: 'type',
-      image: 'image',
+      title: 'heading',
+      subtitle: 'type',
+      media: 'image',
     },
+
     prepare(selection) {
-      const {heading, type, image} = selection
+      const {title, subtitle, media} = selection
+
       return {
-        title: `${heading == undefined ? `(${image.alt})` : heading}`,
-        subtitle: type,
-        media: image,
+        title: `${title == undefined ? `(${media.alt})` : getLocaleVersion(title)}`,
+        subtitle: getLocaleVersion(subtitle),
+        media,
       }
     },
   },

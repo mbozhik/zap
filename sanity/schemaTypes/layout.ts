@@ -20,10 +20,8 @@ export const layout = defineType({
     defineField({
       name: 'hero',
       title: 'Стартовый блок',
-      description: 'Только один элемент массива',
-      type: 'array',
-      of: [{type: 'itemHero'}],
-      validation: (Rule) => Rule.required().min(1).max(1),
+      type: 'itemHero',
+      validation: (Rule) => Rule.required(),
     }),
     defineField({
       name: 'mechanics',
