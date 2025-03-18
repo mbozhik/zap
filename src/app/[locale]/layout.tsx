@@ -36,9 +36,9 @@ export default async function RootLayout({
   return (
     <html lang={locale} className="scroll-smooth">
       <body className={`bg-white text-black ${montserrat.variable} font-montserrat antialiased`}>
-        <Header />
+        <Header locale={locale} />
         {children}
-        <Footer />
+        <Footer locale={locale} />
 
         {process.env.NODE_ENV === 'production' && <YandexMetrika />}
       </body>

@@ -11,6 +11,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import {P} from '~/UI/Typography'
 import Button from '~/UI/Button'
+import LocaleSwitch from '~/Global/LocaleSwitch'
 
 export default function Header() {
   const [isScrolling, setIsScrolling] = useState(false)
@@ -49,7 +50,11 @@ export default function Header() {
           })}
         </nav>
 
-        <Button animated={false} to={ACTION_LINK} className="px-6 xl:px-4 justify-self-end sm:text-base sm:px-3 sm:py-2" text="оставить заявку" />
+        <div className={cn('justify-self-end', 'flex gap-1.5')}>
+          <LocaleSwitch />
+
+          <Button animated={false} to={ACTION_LINK} className="px-6 xl:px-4 sm:text-base sm:px-3 sm:py-2" text="оставить заявку" />
+        </div>
       </motion.div>
     </header>
   )

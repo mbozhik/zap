@@ -6,7 +6,7 @@ export type Locale = (typeof locales)[number]
 
 export const routing = defineRouting({
   locales: locales,
-  defaultLocale: 'ru',
+  defaultLocale: 'en',
 })
 
 export const {Link, redirect, usePathname, useRouter, getPathname} = createNavigation(routing)
