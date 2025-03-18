@@ -7,6 +7,11 @@ import {itemAdvantages} from './itemAdvantages'
 import {itemReview} from './itemReview'
 import {itemQuestion} from './itemQuestion'
 
+export const getLocaleVersion = (field: unknown, locale = 'ru') =>
+  Array.isArray(field)
+    ? field.find((item) => item._key === locale)?.value || field[0]?.value
+    : field
+
 export const schemaTypes = [
   layout,
   itemHero,
