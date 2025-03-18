@@ -15,7 +15,7 @@ export default function Questions({data, locale}: {data: QuestionBlock[]; locale
     <section id="faq" data-section="questions-index" className={cn(BLOCK_BOX, 'flex flex-col items-center gap-20 xl:gap-12 sm:gap-8 pt-12 xl:pt-8 sm:pt-0')}>
       <H1 className="sm:text-center">FAQ</H1>
 
-      <Accordion className="flex flex-col gap-4 xl:gap-3 w-[65vw]" type="single" collapsible>
+      <Accordion className="flex flex-col gap-4 xl:gap-3 w-[65vw] sm:w-auto" type="single" collapsible>
         {data.map((item, idx) => (
           <AccordionItem className="space-y-2.5 sm:space-y-3" value={`question-${idx}`} key={idx}>
             <AccordionTrigger className="px-6 py-4 sm:pl-4 sm:py-3 sm:pr-2.5 space-y-2 rounded-xl border-2 border-black">
