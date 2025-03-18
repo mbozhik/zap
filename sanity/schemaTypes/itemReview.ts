@@ -1,6 +1,8 @@
 import {defineType, defineField, Rule} from 'sanity'
 import {getLocaleVersion} from './index'
 
+import {ROLES} from '../../src/lib/types'
+
 export const itemReview = defineType({
   name: 'itemReview',
   title: 'Элемент отзыва',
@@ -16,7 +18,7 @@ export const itemReview = defineType({
       name: 'role',
       title: 'Роль',
       options: {
-        list: ['отправитель', 'путешественник'].map((value) => ({title: value, value})),
+        list: ROLES.map((value) => ({title: value, value})),
       },
       type: 'string',
       validation: (Rule) => Rule.required(),

@@ -5,10 +5,11 @@ import AdvantagesImage2 from '$/advantages/2.jpg'
 import AdvantagesImage3 from '$/advantages/3.jpg'
 
 import type {AdvantageBlock} from '@/lib/sanity'
-import {BLOCK_BOX, ACTION_LINK, CARD_ROUNDED} from '@/lib/constants'
+import type {Locale} from '@/i18n/routing'
+import {BLOCK_BOX, BLOCK_HEADINGS, ACTION_LINK, CARD_ROUNDED} from '@/lib/constants'
 
 import {useState} from 'react'
-import {cn} from '@/lib/utils'
+import {cn, Localizator} from '@/lib/utils'
 import {motion, AnimatePresence} from 'motion/react'
 import {useMediaQuery} from '@/lib/use-media-query'
 
@@ -17,7 +18,9 @@ import {H1, H3, P} from '~/UI/Typography'
 import DynamicIcon from '~/UI/DynamicIcon'
 import Button from '~/UI/Button'
 
-export default function Advantages({data}: {data: AdvantageBlock[]}) {
+export default function Advantages({data, locale}: {data: AdvantageBlock[]; locale: Locale}) {
+  const getLocalized = Localizator(locale)
+
   const [visibleIndex, setVisibleIndex] = useState<number>(0)
   const isDesktop = useMediaQuery('(min-width: 768px)')
 
@@ -32,7 +35,7 @@ export default function Advantages({data}: {data: AdvantageBlock[]}) {
   return (
     <section id="advantages" data-section="advantages-index" className={cn('flex flex-col items-center gap-20 xl:gap-12 sm:gap-8 border-2 border-black pt-16 pb-20 xl:pt-12 xl:pb-14 sm:py-6', CARD_ROUNDED)}>
       <H1 animated offset={250} className="sm:text-center">
-        Почему мы?
+        {BLOCK_HEADINGS['advantages'][locale]}
       </H1>
 
       <div data-section="module-advantages" className={cn(BLOCK_BOX, 'grid-cols-12', 'grid gap-20 xl:gap-14', 'sm:flex sm:flex-col-reverse sm:gap-3 sm:px-3')}>
@@ -45,7 +48,7 @@ export default function Advantages({data}: {data: AdvantageBlock[]}) {
               onClick={() => setVisibleIndex(idx)} // Open on click
             >
               <div className="w-full flex items-center justify-between">
-                <H3 animated>{item.heading}</H3>
+                <H3 animated>{getLocalized(item.heading)}</H3>
                 <DynamicIcon className="size-12 xl:size-10" name={item.icon} />
               </div>
 
@@ -58,7 +61,7 @@ export default function Advantages({data}: {data: AdvantageBlock[]}) {
                     transition={{duration: 0.3, ease: 'easeIn'}}
                   >
                     <P animated className="xl:!leading-[1.4]">
-                      {item.caption}
+                      {getLocalized(item.caption)}
                     </P>
                   </motion.div>
                 )}
@@ -66,7 +69,7 @@ export default function Advantages({data}: {data: AdvantageBlock[]}) {
             </div>
           ))}
 
-          <Button to={ACTION_LINK} className="w-full py-5 xl:py-3.5 rounded-xl xl:rounded-lg" text="оставить заявку" />
+          <Button to={ACTION_LINK} className="w-full py-5 xl:py-3.5 rounded-xl xl:rounded-lg" type="submit" locale={locale} />
         </div>
 
         <div className={cn('col-span-7', 'grid-cols-5 sm:grid-cols-1 min-h-[75vh] xl:min-h-[80vh] sm:min-h-0', 'grid gap-4 xl:gap-3')}>
