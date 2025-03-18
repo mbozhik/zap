@@ -1,7 +1,14 @@
+import type {Locale} from '@/i18n/routing'
 import type {UserType, GridItemType, GridItemColor} from '@/lib/types'
 
 import type {ImageProps} from 'next-sanity/image'
 import type {IconName} from 'lucide-react/dynamic'
+
+export type LocalizedValue = {
+  _type: unknown
+  _key: Locale
+  value: string
+}
 
 export type LayoutData = {
   hero: HeroBlock
