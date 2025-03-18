@@ -26,6 +26,9 @@ importers:
       next:
         specifier: 15.1.4
         version: 15.1.4(@babel/core@7.26.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
+      next-intl:
+        specifier: ^4.0.2
+        version: 4.0.2(next@15.1.4(@babel/core@7.26.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(react@19.0.0)(typescript@5.7.3)
       next-sanity:
         specifier: ^9.8.35
         version: 9.8.35(@sanity/client@6.24.3)(@sanity/icons@3.5.7(react@19.0.0))(@sanity/types@3.69.0(@types/react@19.0.5))(@sanity/ui@2.11.2(@emotion/is-prop-valid@1.2.2)(react-dom@19.0.0(react@19.0.0))(react-is@18.3.1)(react@19.0.0)(styled-components@6.1.14(react-dom@19.0.0(react@19.0.0))(react@19.0.0)))(next@15.1.4(@babel/core@7.26.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(sanity@3.69.0(@emotion/is-prop-valid@1.2.2)(@types/babel__core@7.20.5)(@types/node@20.17.12)(@types/react@19.0.5)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(styled-components@6.1.14(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(terser@5.37.0)(typescript@5.7.3))(styled-components@6.1.14(react-dom@19.0.0(react@19.0.0))(react@19.0.0))
@@ -1064,6 +1067,24 @@ packages:
   '@floating-ui/utils@0.2.9':
     resolution: {integrity: sha512-MDWhGtE+eHw5JW7lq4qhc5yRLS11ERl1c7Z6Xd0a58DozHES6EnNNwUWbMiG4J9Cgj053Bhk8zvlhFYKVhULwg==}
 
+  '@formatjs/ecma402-abstract@2.3.3':
+    resolution: {integrity: sha512-pJT1OkhplSmvvr6i3CWTPvC/FGC06MbN5TNBfRO6Ox62AEz90eMq+dVvtX9Bl3jxCEkS0tATzDarRZuOLw7oFg==}
+
+  '@formatjs/fast-memoize@2.2.6':
+    resolution: {integrity: sha512-luIXeE2LJbQnnzotY1f2U2m7xuQNj2DA8Vq4ce1BY9ebRZaoPB1+8eZ6nXpLzsxuW5spQxr7LdCg+CApZwkqkw==}
+
+  '@formatjs/icu-messageformat-parser@2.11.1':
+    resolution: {integrity: sha512-o0AhSNaOfKoic0Sn1GkFCK4MxdRsw7mPJ5/rBpIqdvcC7MIuyUSW8WChUEvrK78HhNpYOgqCQbINxCTumJLzZA==}
+
+  '@formatjs/icu-skeleton-parser@1.8.13':
+    resolution: {integrity: sha512-N/LIdTvVc1TpJmMt2jVg0Fr1F7Q1qJPdZSCs19unMskCmVQ/sa0H9L8PWt13vq+gLdLg1+pPsvBLydL1Apahjg==}
+
+  '@formatjs/intl-localematcher@0.5.10':
+    resolution: {integrity: sha512-af3qATX+m4Rnd9+wHcjJ4w2ijq+rAVP3CCinJQvFv1kgSu1W6jypUmvleJxcewdxmutM8dmIRZFxO/IQBZmP2Q==}
+
+  '@formatjs/intl-localematcher@0.6.0':
+    resolution: {integrity: sha512-4rB4g+3hESy1bHSBG3tDFaMY2CH67iT7yne1e+0CLTsGLDcmoEWWpJjjpWVaYgYfYuohIRuo0E+N536gd2ZHZA==}
+
   '@humanfs/core@0.19.1':
     resolution: {integrity: sha512-5DyQ4+1JEUzejeK1JGICcideyfUbGixgS9jNgex5nqkW+cY7WZhxBigmieN5Qnw9ZosSNVC9KQKyb+GUaGyKUA==}
     engines: {node: '>=18.18.0'}
@@ -1983,6 +2004,9 @@ packages:
         optional: true
       svelte:
         optional: true
+
+  '@schummar/icu-type-parser@1.21.5':
+    resolution: {integrity: sha512-bXHSaW5jRTmke9Vd0h5P7BtWZG9Znqb8gSDxZnxaGSJnGwPLDPfS+3g0BKzeWqzgZPsIVZkM7m2tbo18cm5HBw==}
 
   '@sentry-internal/browser-utils@8.48.0':
     resolution: {integrity: sha512-pLtu0Fa1Ou0v3M1OEO1MB1EONJVmXEGtoTwFRCO1RPQI2ulmkG6BikINClFG5IBpoYKZ33WkEXuM6U5xh+pdZg==}
@@ -3210,20 +3234,6 @@ packages:
     resolution: {integrity: sha512-tzN8e4TX8+kkxGPK8D5u0FNmjPUjw3lwC9lSLxxoB/+GtsJG91CO8bSWy73APlgAZzZbXEYZJuxjkHH2w+Ezhw==}
     engines: {node: '>= 6'}
 
-  framer-motion@11.18.0:
-    resolution: {integrity: sha512-Vmjl5Al7XqKHzDFnVqzi1H9hzn5w4eN/bdqXTymVpU2UuMQuz9w6UPdsL9dFBeH7loBlnu4qcEXME+nvbkcIOw==}
-    peerDependencies:
-      '@emotion/is-prop-valid': '*'
-      react: ^18.0.0 || ^19.0.0
-      react-dom: ^18.0.0 || ^19.0.0
-    peerDependenciesMeta:
-      '@emotion/is-prop-valid':
-        optional: true
-      react:
-        optional: true
-      react-dom:
-        optional: true
-
   framer-motion@11.18.1:
     resolution: {integrity: sha512-EQa8c9lWVOm4zlz14MsBJWr8woq87HsNmsBnQNvcS0hs8uzw6HtGAxZyIU7EGTVpHD1C1n01ufxRyarXcNzpPg==}
     peerDependencies:
@@ -3515,6 +3525,9 @@ packages:
   internal-slot@1.1.0:
     resolution: {integrity: sha512-4gd7VpWNQNB4UKKCFFVcp1AVv+FMOgs9NKzjHKusc8jTMhd5eL1NqQqOpE0KzMds804/yHlglp3uxgluOqAPLw==}
     engines: {node: '>= 0.4'}
+
+  intl-messageformat@10.7.15:
+    resolution: {integrity: sha512-LRyExsEsefQSBjU2p47oAheoKz+EOJxSLDdjOaEjdriajfHsMXOmV/EhMvYSg9bAgCUHasuAC+mcUBe/95PfIg==}
 
   is-alphabetical@1.0.4:
     resolution: {integrity: sha512-DwzsA04LQ10FHTZuL0/grVDk4rFoVH1pjAToYwBrHSxcrBIGQuXrQMtD5U1b0U2XVgKZCTLLP8u2Qxqhy3l2Vg==}
@@ -4074,14 +4087,8 @@ packages:
   moment@2.30.1:
     resolution: {integrity: sha512-uEmtNhbDOrWPFS+hdjFCBfy9f2YoyzRpwcl+DqpC6taX21FzsTLQVbMV/W7PzNSX6x/bhC1zA3c2UQ5NzH6how==}
 
-  motion-dom@11.16.4:
-    resolution: {integrity: sha512-2wuCie206pCiP2K23uvwJeci4pMFfyQKpWI0Vy6HrCTDzDCer4TsYtT7IVnuGbDeoIV37UuZiUr6SZMHEc1Vww==}
-
   motion-dom@11.18.1:
     resolution: {integrity: sha512-g76KvA001z+atjfxczdRtw/RXOM3OMSdd1f4DL77qCTF/+avrRJiawSG4yDibEQ215sr9kpinSlX2pCTJ9zbhw==}
-
-  motion-utils@11.16.0:
-    resolution: {integrity: sha512-ngdWPjg31rD4WGXFi0eZ00DQQqKKu04QExyv/ymlC+3k+WIgYVFbt6gS5JsFPbJODTF/r8XiE/X+SsoT9c0ocw==}
 
   motion-utils@11.18.1:
     resolution: {integrity: sha512-49Kt+HKjtbJKLtgO/LKj9Ld+6vw9BjH5d9sc40R/kVyH8GLAXgT42M2NnuPcJNuA3s9ZfZBUcwIgpmZWGEE+hA==}
@@ -4125,6 +4132,20 @@ packages:
 
   natural-compare@1.4.0:
     resolution: {integrity: sha512-OWND8ei3VtNC9h7V60qff3SVobHr996CTwgxubgyQYEpg290h9J0buyECNNJexkFm5sOajh5G116RYA1c8ZMSw==}
+
+  negotiator@1.0.0:
+    resolution: {integrity: sha512-8Ofs/AUQh8MaEcrlq5xOX0CQ9ypTF5dl78mjlMNfOK08fzpgTHQRQPBxcPlEtIw0yRpws+Zo/3r+5WRby7u3Gg==}
+    engines: {node: '>= 0.6'}
+
+  next-intl@4.0.2:
+    resolution: {integrity: sha512-3cKVflwdrqxCOvAL+DtGN68qR802i0PEj0dttkAD5IK5XxOjugQs4yU8aSakvPMbkOrhEJ+89z5lG2EAqi7Gkw==}
+    peerDependencies:
+      next: ^12.0.0 || ^13.0.0 || ^14.0.0 || ^15.0.0
+      react: ^16.8.0 || ^17.0.0 || ^18.0.0 || >=19.0.0-rc <19.0.0 || ^19.0.0
+      typescript: ^5.0.0
+    peerDependenciesMeta:
+      typescript:
+        optional: true
 
   next-sanity@9.8.35:
     resolution: {integrity: sha512-LKMdG6bon84ACaeNDPFfkQ4DZu7JGh//klT+QO9oB7rmS8O+1YxTUKEXOCMfdpVDMJNUeqs3574b+SwQJsW/Nw==}
@@ -5432,6 +5453,11 @@ packages:
     peerDependencies:
       react: '>=17.0.0'
 
+  use-intl@4.0.2:
+    resolution: {integrity: sha512-6RAP/5KJMRzLMLS25/BVh2u09cRK8S6HRGc1RnZvqR547qAKZCpjYylOqMPU9eNIirAiKoGmsoUPa7JrlaA/yg==}
+    peerDependencies:
+      react: ^17.0.0 || ^18.0.0 || >=19.0.0-rc <19.0.0 || ^19.0.0
+
   use-isomorphic-layout-effect@1.2.0:
     resolution: {integrity: sha512-q6ayo8DWoPZT0VdG4u3D3uxcgONP3Mevx2i2b0434cwWBoL+aelL1DzkXI6w3PhTZzUeR2kaVlZn70iCiseP6w==}
     peerDependencies:
@@ -6712,6 +6738,36 @@ snapshots:
 
   '@floating-ui/utils@0.2.9': {}
 
+  '@formatjs/ecma402-abstract@2.3.3':
+    dependencies:
+      '@formatjs/fast-memoize': 2.2.6
+      '@formatjs/intl-localematcher': 0.6.0
+      decimal.js: 10.4.3
+      tslib: 2.8.1
+
+  '@formatjs/fast-memoize@2.2.6':
+    dependencies:
+      tslib: 2.8.1
+
+  '@formatjs/icu-messageformat-parser@2.11.1':
+    dependencies:
+      '@formatjs/ecma402-abstract': 2.3.3
+      '@formatjs/icu-skeleton-parser': 1.8.13
+      tslib: 2.8.1
+
+  '@formatjs/icu-skeleton-parser@1.8.13':
+    dependencies:
+      '@formatjs/ecma402-abstract': 2.3.3
+      tslib: 2.8.1
+
+  '@formatjs/intl-localematcher@0.5.10':
+    dependencies:
+      tslib: 2.8.1
+
+  '@formatjs/intl-localematcher@0.6.0':
+    dependencies:
+      tslib: 2.8.1
+
   '@humanfs/core@0.19.1': {}
 
   '@humanfs/node@0.16.6':
@@ -7627,7 +7683,7 @@ snapshots:
       '@sanity/ui': 2.11.2(@emotion/is-prop-valid@1.2.2)(react-dom@19.0.0(react@19.0.0))(react-is@18.3.1)(react@19.0.0)(styled-components@6.1.14(react-dom@19.0.0(react@19.0.0))(react@19.0.0))
       '@sanity/uuid': 3.0.2
       fast-deep-equal: 3.1.3
-      framer-motion: 11.18.0(@emotion/is-prop-valid@1.2.2)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
+      framer-motion: 11.18.1(@emotion/is-prop-valid@1.2.2)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
       lodash: 4.17.21
       mendoza: 3.0.8
       mnemonist: 0.39.8
@@ -7725,7 +7781,7 @@ snapshots:
       '@sanity/color': 3.0.6
       '@sanity/icons': 3.5.7(react@19.0.0)
       csstype: 3.1.3
-      framer-motion: 11.18.0(@emotion/is-prop-valid@1.2.2)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
+      framer-motion: 11.18.1(@emotion/is-prop-valid@1.2.2)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
       react: 19.0.0
       react-compiler-runtime: 19.0.0-beta-55955c9-20241229(react@19.0.0)
       react-dom: 19.0.0(react@19.0.0)
@@ -7782,6 +7838,8 @@ snapshots:
       next: 15.1.4(@babel/core@7.26.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
     transitivePeerDependencies:
       - debug
+
+  '@schummar/icu-type-parser@1.21.5': {}
 
   '@sentry-internal/browser-utils@8.48.0':
     dependencies:
@@ -9279,16 +9337,6 @@ snapshots:
       combined-stream: 1.0.8
       mime-types: 2.1.35
 
-  framer-motion@11.18.0(@emotion/is-prop-valid@1.2.2)(react-dom@19.0.0(react@19.0.0))(react@19.0.0):
-    dependencies:
-      motion-dom: 11.16.4
-      motion-utils: 11.16.0
-      tslib: 2.8.1
-    optionalDependencies:
-      '@emotion/is-prop-valid': 1.2.2
-      react: 19.0.0
-      react-dom: 19.0.0(react@19.0.0)
-
   framer-motion@11.18.1(@emotion/is-prop-valid@1.2.2)(react-dom@19.0.0(react@19.0.0))(react@19.0.0):
     dependencies:
       motion-dom: 11.18.1
@@ -9620,6 +9668,13 @@ snapshots:
       es-errors: 1.3.0
       hasown: 2.0.2
       side-channel: 1.1.0
+
+  intl-messageformat@10.7.15:
+    dependencies:
+      '@formatjs/ecma402-abstract': 2.3.3
+      '@formatjs/fast-memoize': 2.2.6
+      '@formatjs/icu-messageformat-parser': 2.11.1
+      tslib: 2.8.1
 
   is-alphabetical@1.0.4: {}
 
@@ -10167,15 +10222,9 @@ snapshots:
 
   moment@2.30.1: {}
 
-  motion-dom@11.16.4:
-    dependencies:
-      motion-utils: 11.16.0
-
   motion-dom@11.18.1:
     dependencies:
       motion-utils: 11.18.1
-
-  motion-utils@11.16.0: {}
 
   motion-utils@11.18.1: {}
 
@@ -10205,6 +10254,18 @@ snapshots:
   nanoid@5.0.9: {}
 
   natural-compare@1.4.0: {}
+
+  negotiator@1.0.0: {}
+
+  next-intl@4.0.2(next@15.1.4(@babel/core@7.26.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(react@19.0.0)(typescript@5.7.3):
+    dependencies:
+      '@formatjs/intl-localematcher': 0.5.10
+      negotiator: 1.0.0
+      next: 15.1.4(@babel/core@7.26.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
+      react: 19.0.0
+      use-intl: 4.0.2(react@19.0.0)
+    optionalDependencies:
+      typescript: 5.7.3
 
   next-sanity@9.8.35(@sanity/client@6.24.3)(@sanity/icons@3.5.7(react@19.0.0))(@sanity/types@3.69.0(@types/react@19.0.5))(@sanity/ui@2.11.2(@emotion/is-prop-valid@1.2.2)(react-dom@19.0.0(react@19.0.0))(react-is@18.3.1)(react@19.0.0)(styled-components@6.1.14(react-dom@19.0.0(react@19.0.0))(react@19.0.0)))(next@15.1.4(@babel/core@7.26.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(sanity@3.69.0(@emotion/is-prop-valid@1.2.2)(@types/babel__core@7.20.5)(@types/node@20.17.12)(@types/react@19.0.5)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(styled-components@6.1.14(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(terser@5.37.0)(typescript@5.7.3))(styled-components@6.1.14(react-dom@19.0.0(react@19.0.0))(react@19.0.0)):
     dependencies:
@@ -11052,7 +11113,7 @@ snapshots:
       execa: 2.1.0
       exif-component: 1.0.1
       form-data: 4.0.1
-      framer-motion: 11.18.0(@emotion/is-prop-valid@1.2.2)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
+      framer-motion: 11.18.1(@emotion/is-prop-valid@1.2.2)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
       get-it: 8.6.6(debug@4.4.0)
       get-random-values-esm: 1.0.2
       groq-js: 1.14.2
@@ -11815,6 +11876,13 @@ snapshots:
 
   use-hot-module-reload@2.0.0(react@19.0.0):
     dependencies:
+      react: 19.0.0
+
+  use-intl@4.0.2(react@19.0.0):
+    dependencies:
+      '@formatjs/fast-memoize': 2.2.6
+      '@schummar/icu-type-parser': 1.21.5
+      intl-messageformat: 10.7.15
       react: 19.0.0
 
   use-isomorphic-layout-effect@1.2.0(@types/react@19.0.5)(react@19.0.0):

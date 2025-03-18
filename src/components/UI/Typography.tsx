@@ -34,8 +34,15 @@ function Typography({type, className, children, animated = false, by = 'line', o
     const textContent = React.Children.toArray(children)
       .filter((child) => typeof child === 'string')
       .join(' ')
+      .replace(/&nbsp;/g, '§')
 
-    const segments = by === 'line' ? textContent.split('\n').filter(Boolean) : textContent.split(' ').filter(Boolean)
+    const segments =
+      by === 'line'
+        ? textContent.split('\n').filter(Boolean)
+        : textContent
+            .split(/\s+(?!§)/)
+            .filter(Boolean)
+            .map((segment) => segment.replace(/§/g, ' '))
 
     const container = {
       hidden: {opacity: 0},

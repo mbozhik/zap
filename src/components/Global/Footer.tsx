@@ -6,6 +6,7 @@ import LogoBigImage from '$/logo-big.svg'
 import FooterImage from '$/footer.png'
 import MobileFooterImage from '$/footer-mobile.png'
 
+import type {Locale} from '@/i18n/routing'
 import {ACTION_LINK, WEBSITE_BOX} from '@/lib/constants'
 import {cn} from '@/lib/utils'
 
@@ -28,16 +29,16 @@ const SOCIALS = {
   },
 }
 
-export default function Footer() {
-  const linkStyles = 'size-fit text-right border-b border-black/40 hover:border-transparent duration-200'
+export default function Footer({locale}: {locale: Locale}) {
+  // const linkStyles = 'size-fit text-right border-b border-black/40 hover:border-transparent duration-200'
 
   return (
     <footer id="contacts" className={cn(WEBSITE_BOX, 'relative flex sm:flex-col items-end sm:items-start justify-between sm:gap-6', 'pt-16 pb-8 xl:pt-12 xl:pb-5 sm:pt-5 sm:pb-[25vh]', 'border-t-2 border-black')}>
-      <Image className={cn('hidden sm:block', 'sm:w-[60vw]')} src={LogoBigImage} alt="Логотип ZAP!" />
+      <Image className={cn('hidden sm:block', 'sm:w-[60vw]')} src={LogoBigImage} alt={locale === 'ru' ? 'Логотип ZAP!' : 'ZAP! logo'} />
 
       <div className="space-y-3 sm:space-y-2">
         <H4 animated offset={0}>
-          Напишите нам!
+          {locale === 'ru' ? 'Напишите нам!' : 'Write us!'}
         </H4>
 
         <div className="flex gap-2.5">
@@ -50,9 +51,9 @@ export default function Footer() {
       </div>
 
       <div className="flex flex-col items-end gap-16">
-        <Image className={cn('sm:hidden', 'w-[27vw] xl:w-[30vw]')} src={LogoBigImage} alt="Логотип ZAP!" />
+        <Image className={cn('sm:hidden', 'w-[27vw] xl:w-[30vw]')} src={LogoBigImage} alt={locale === 'ru' ? 'Логотип ZAP!' : 'ZAP! logo'} />
 
-        <div className="sm:!mt-2 flex sm:flex-wrap gap-14 xl:gap-10 sm:gap-x-6 sm:gap-y-3.5 text-black/40">
+        <div className="sm:!mt-2 flex sm:flex-wrap gap-6 sm:gap-y-0 text-black/40">
           {/* <Link className={linkStyles} href="#privacy-policy">
             <P>Privacy Policy</P>
           </Link>
@@ -61,13 +62,9 @@ export default function Footer() {
             <P>Terms & Conditions</P>
           </Link> */}
 
-          <P>
-            2024. © Zap! by{' '}
-            <Link className={linkStyles} href="https://www.asseal.ae/" target="_blank" rel="noopener noreferrer">
-              Asseal
-            </Link>
-            .
-          </P>
+          <P>Zap Internet Platform Ltd</P>
+          <P>DIFC, Dubai, UAE</P>
+          <P>© 2025. All rights reserved.</P>
         </div>
       </div>
 

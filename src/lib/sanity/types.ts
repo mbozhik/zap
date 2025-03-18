@@ -1,7 +1,14 @@
-import type {UserType, GridItemType, GridItemColor} from '@/lib/types'
+import type {Locale} from '@/i18n/routing'
+import type {UserType, RoleType, GridItemType, GridItemColor} from '@/lib/types'
 
 import type {ImageProps} from 'next-sanity/image'
 import type {IconName} from 'lucide-react/dynamic'
+
+export type LocalizedValue = {
+  _type: unknown
+  _key: Locale
+  value: string
+}
 
 export type LayoutData = {
   hero: HeroBlock
@@ -12,40 +19,39 @@ export type LayoutData = {
 }
 
 export type HeroBlock = {
-  heading: string
-  caption: string
+  heading: LocalizedValue[]
+  caption: LocalizedValue[]
 }
 
 export type MechanicsBlock = {
   image: ImageProps
-  heading: string
-  caption: string
+  heading: LocalizedValue[]
+  caption: LocalizedValue[]
   action?: {
-    label: string
+    label: LocalizedValue[]
     action: string
   }[]
 }
 
 export type AdvantageBlock = {
-  heading: string
-  caption: string
+  heading: LocalizedValue[]
+  caption: LocalizedValue[]
   icon: IconName
 }
 
 export type ReviewBlock = {
-  name: string
-  role: string
-  text: string
+  name: LocalizedValue[]
+  role: RoleType
+  text: LocalizedValue[]
   avatar: ImageProps
 }
 
 export type QuestionBlock = {
-  question: string
-  answer: string
+  question: LocalizedValue[]
+  answer: LocalizedValue[]
 }
 
 // Пользователи
-
 export type UsersData = {
   type: UserType
   grid: GridItem[]
@@ -53,8 +59,8 @@ export type UsersData = {
 
 export type GridItem = {
   type: GridItemType
-  heading: string | null
-  caption: string | null
+  heading: LocalizedValue[] | null
+  caption: LocalizedValue[] | null
   background: GridItemColor
   icon: IconName
   image: ImageProps

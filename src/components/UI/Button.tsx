@@ -1,5 +1,6 @@
 'use client'
 
+import type {Locale} from '@/i18n/routing'
 import {typoClasses} from '~/UI/Typography'
 import {cn} from '@/lib/utils'
 
@@ -10,21 +11,31 @@ import {useMediaQuery} from '@/lib/use-media-query'
 
 type Props = {
   to?: string
-  text: string
+  text?: string
   className?: string
   onClick?: () => void
   animated?: boolean
+  type?: 'submit' | 'contact' | 'join'
+  locale?: Locale
 }
 
 export const buttonStyles = cn(typoClasses.p, 'block size-fit px-14 xl:px-12 sm:px-6 py-2.5 xl:py-2 sm:py-2.5', 'lowercase text-center rounded-lg text-white bg-black border-2 border-transparent')
 const buttonHover = 'hover:text-black hover:bg-green hover:border-black transition-colors duration-300'
 
-export default function Button({to, text, className, onClick, animated = true}: Props) {
+export default function Button({to, text, className, onClick, animated = true, type, locale}: Props) {
   const ref = useRef<HTMLButtonElement>(null)
   const [position, setPosition] = useState<{x: number; y: number}>({x: 0, y: 0})
   const router = useRouter()
 
   const isDesktop = useMediaQuery('(min-width: 768px)')
+
+  const typeText = {
+    submit: {ru: 'оставить заявку', en: 'submit a request'},
+    contact: {ru: 'связаться с нами', en: 'contact us'},
+    join: {ru: 'присоединиться', en: 'join'},
+  }
+
+  const textContent = (type && locale && typeText?.[type][locale]) || text
 
   const handleMouse = (e: React.MouseEvent<HTMLButtonElement>) => {
     if (ref.current) {
@@ -57,7 +68,7 @@ export default function Button({to, text, className, onClick, animated = true}: 
   if (!isDesktop) {
     return (
       <button className={cn('relative', buttonStyles, buttonHover, className)} ref={ref} onClick={handleClick}>
-        {text}
+        {textContent}
       </button>
     )
   }
@@ -65,13 +76,13 @@ export default function Button({to, text, className, onClick, animated = true}: 
   if (animated) {
     return (
       <motion.button className={cn('relative', buttonStyles, buttonHover, className)} ref={ref} transition={{type: 'spring', stiffness: 80, damping: 20, mass: 0.5}} onMouseMove={handleMouse} onMouseLeave={reset} onClick={handleClick} animate={{x, y}}>
-        {text}
+        {textContent}
       </motion.button>
     )
   } else {
     return (
       <button className={cn('relative', buttonStyles, buttonHover, className)} ref={ref} onClick={handleClick}>
-        {text}
+        {textContent}
       </button>
     )
   }

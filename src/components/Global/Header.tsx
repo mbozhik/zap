@@ -1,18 +1,21 @@
 'use client'
 
 import LogoImage from '$/logo.svg'
+
+import type {Locale} from '@/i18n/routing'
 import {WEBSITE_BOX, HEADER_LINKS, ACTION_LINK} from '@/lib/constants'
 
-import {cn} from '@/lib/utils'
 import {useEffect, useState} from 'react'
 import {motion} from 'motion/react'
+import {cn} from '@/lib/utils'
 
 import Image from 'next/image'
 import Link from 'next/link'
 import {P} from '~/UI/Typography'
 import Button from '~/UI/Button'
+import LocaleSwitch from '~/Global/LocaleSwitch'
 
-export default function Header() {
+export default function Header({locale}: {locale: Locale}) {
   const [isScrolling, setIsScrolling] = useState(false)
 
   useEffect(() => {
@@ -43,13 +46,17 @@ export default function Header() {
           {Object.entries(HEADER_LINKS).map(([key, label]) => {
             return (
               <Link href={`/#${key}`} className="block lowercase duration-200 border-b border-transparent hover:border-black" key={key}>
-                <P>{label}</P>
+                <P>{label[locale === 'ru' ? 0 : 1]}</P>
               </Link>
             )
           })}
         </nav>
 
-        <Button animated={false} to={ACTION_LINK} className="px-6 xl:px-4 justify-self-end sm:text-base sm:px-3 sm:py-2" text="оставить заявку" />
+        <div className={cn('justify-self-end', 'flex gap-1.5')}>
+          <LocaleSwitch />
+
+          <Button animated={false} to={ACTION_LINK} className="px-6 xl:px-4 sm:text-base sm:px-3 sm:py-2" type="submit" locale={locale} />
+        </div>
       </motion.div>
     </header>
   )

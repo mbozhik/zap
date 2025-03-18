@@ -1,11 +1,12 @@
 'use client'
 
+import type {Locale} from '@/i18n/routing'
 import {USER_VIEWS, type UserType} from '@/lib/types'
 import {urlForImage, type UsersData, type GridItem} from '@/lib/sanity'
 import {CARD_ROUNDED} from '@/lib/constants'
 import {buttonStyles} from '~/UI/Button'
 
-import {cn} from '@/lib/utils'
+import {cn, Localizator} from '@/lib/utils'
 import {useState} from 'react'
 import {twMerge} from 'tailwind-merge'
 import {AnimatePresence, motion} from 'motion/react'
@@ -21,7 +22,18 @@ const variants = {
   exit: {opacity: 0, y: 30, filter: 'blur(4px)'},
 }
 
-export default function UsersModule({data}: {data: UsersData[]}) {
+const SWITCH_TEXT: {[locale in Locale]: {[key in UserType]: string}} = {
+  ru: {
+    Отправителям: 'Отправители',
+    Путешественникам: 'Путешественники',
+  },
+  en: {
+    Отправителям: 'Senders',
+    Путешественникам: 'Travelers',
+  },
+}
+
+export default function UsersModule({data, locale}: {data: UsersData[]; locale: Locale}) {
   const [activeView, setActiveView] = useState<UserType>('Отправителям')
 
   const activeIndex = USER_VIEWS.indexOf(activeView)
@@ -32,7 +44,7 @@ export default function UsersModule({data}: {data: UsersData[]}) {
       <div data-section="switch-module" className="flex sm:flex-row gap-2 sm:gap-1">
         {USER_VIEWS.map((view, idx) => (
           <button key={idx} onClick={() => setActiveView(view)} className={cn(buttonStyles, idx == 1 && 'sm:w-full', 'px-10 xl:px-10 sm:px-5 sm:text-sm sm:py-3 duration-300', activeView === view ? '' : 'bg-black/20 text-black hover:bg-black/30')}>
-            {view}
+            {SWITCH_TEXT[locale][view]}
           </button>
         ))}
       </div>
@@ -42,7 +54,7 @@ export default function UsersModule({data}: {data: UsersData[]}) {
           <motion.div key={activeIndex} initial="enter" animate="center" exit="exit" variants={variants} transition={transition}>
             <div className={twMerge('grid grid-cols-12 auto-rows-fr gap-4 xl:gap-3 min-h-[65vh] sm:min-h-full', 'sm:flex sm:flex-col')}>
               {activeData?.grid.map(
-                (item, key) => <GridItem item={item} idx={key} key={key} />, // Dynamic component
+                (item, key) => <GridItem item={item} locale={locale} idx={key} key={key} />, // Dynamic component
               )}
             </div>
           </motion.div>
@@ -52,7 +64,9 @@ export default function UsersModule({data}: {data: UsersData[]}) {
   )
 }
 
-function GridItem({item, idx}: {item: GridItem; idx: number}) {
+function GridItem({item, locale, idx}: {item: GridItem; locale: Locale; idx: number}) {
+  const getLocalized = Localizator(locale)
+
   function getGridClass(idx: number) {
     const gridSpanClasses = [
       'col-span-4', // Top-left
@@ -84,12 +98,12 @@ function GridItem({item, idx}: {item: GridItem; idx: number}) {
       <div className={cn(cellStyles, 'p-6 xl:p-5 sm:py-6 flex flex-col justify-center gap-2.5')}>
         {item.heading && (
           <H4 animated className="!leading-[1.3]">
-            {item.heading}
+            {getLocalized(item.heading)}
           </H4>
         )}
         {item.caption && (
           <P animated className="!leading-[1.4]">
-            {item.caption}
+            {getLocalized(item.caption)}
           </P>
         )}
 
