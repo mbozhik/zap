@@ -13,8 +13,12 @@ import Reviews from '~/index/Reviews'
 import Questions from '~/index/Questions'
 import Action from '~/index/Action'
 
-export default async function IndexPage({params}: {params: {locale: Locale}}) {
-  const {locale} = await Promise.resolve(params)
+type PageProps = {
+  params: Promise<{locale: Locale}>
+}
+
+export default async function IndexPage({params}: PageProps) {
+  const {locale} = await params
 
   const pageData: LayoutData = await client.fetch(INDEX_QUERY)
   const {hero, mechanics, advantages, reviews, questions} = pageData
