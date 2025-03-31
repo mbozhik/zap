@@ -21,11 +21,11 @@ const SOCIALS = {
   },
   whatsapp: {
     icon: WhatsAppLogo,
-    link: 'https://https://wa.me/79151690543',
+    link: 'https://tinyurl.com/zapzapae',
   },
   email: {
     icon: EmailLogo,
-    link: 'mailto:support@zapdelivery.ae',
+    link: 'mailto:hello@zap.ae',
   },
 }
 
