@@ -10,6 +10,9 @@ import YandexMetrika from '~/Global/Analytics'
 import Header from '~/Global/Header'
 import Footer from '~/Global/Footer'
 
+export const dynamic = 'force-dynamic'
+export const revalidate = 86400
+
 export async function generateMetadata({params}: {params: Promise<{locale: Locale}>}): Promise<Metadata> {
   const {locale} = await params
   return metadata[locale]
