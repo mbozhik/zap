@@ -53,18 +53,22 @@ export default function Footer({locale}: {locale: Locale}) {
       <div className="flex flex-col items-end gap-16">
         <Image className={cn('sm:hidden', 'w-[27vw] xl:w-[30vw]')} src={LogoBigImage} alt={locale === 'ru' ? 'Логотип ZAP!' : 'ZAP! logo'} />
 
-        <div className="sm:!mt-2 flex sm:flex-wrap gap-6 sm:gap-y-0 text-black/40">
-          {/* <Link className={linkStyles} href="#privacy-policy">
+        <div className="sm:!mt-2 flex items-end sm:flex-wrap gap-6 sm:gap-y-2 text-black/40">
+          <Link href="/privacy-policy.pdf" target="_blank" className="size-fit text-right border-b border-black/40 hover:border-transparent duration-200">
             <P>Privacy Policy</P>
           </Link>
 
-          <Link className={linkStyles} href="#terms-conditions">
+          {/* <Link className={linkStyles} href="#terms-conditions">
             <P>Terms & Conditions</P>
           </Link> */}
 
-          <P>Zap Internet Platform Ltd</P>
-          <P>DIFC, Dubai, UAE</P>
-          <P>© 2025. All rights reserved.</P>
+          <P className="text-right sm:text-left">
+            DIFC, Dubai, UAE <br className="hidden xl:block" /> Zap Internet Platform Ltd
+          </P>
+
+          <P className="text-right sm:text-left">
+            © 2025. <br className="hidden xl:block" /> All rights reserved.
+          </P>
         </div>
       </div>
 
