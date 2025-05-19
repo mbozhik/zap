@@ -19,5 +19,5 @@ export default function LocaleSwitch() {
     window.location.href = newPathname // full page reload
   }
 
-  return <Button onClick={toggleLocale} animated={false} className={cn('px-3.5 justify-self-end sm:text-base sm:px-3 sm:py-2', 'bg-white border-black text-black')} text={newLocale} />
+  return <Button onClick={toggleLocale} animated={false} className={cn('px-3.5 xl:px-3 justify-self-end sm:text-base sm:px-3 sm:py-2', 'bg-white border-black text-black')} text={newLocale} />
 }

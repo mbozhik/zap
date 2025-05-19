@@ -55,7 +55,7 @@ export default function Header({locale}: {locale: Locale}) {
         <div className={cn('justify-self-end', 'flex gap-1.5')}>
           <LocaleSwitch />
 
-          <Button animated={false} to={ACTION_LINK} className="px-6 xl:px-4 sm:text-base sm:px-3 sm:py-2" type="submit" locale={locale} />
+          <Button animated={false} to={ACTION_LINK} className="px-6 xl:px-4 sm:text-base sm:px-3 sm:py-2 text-nowrap" type="submit" locale={locale} />
         </div>
       </motion.div>
     </header>
