@@ -12,7 +12,7 @@ import {cn} from '@/lib/utils'
 
 import Link from 'next/link'
 import Image from 'next/image'
-import {H4, P} from '~/UI/Typography'
+import {H4, P, SPAN} from '~/UI/Typography'
 
 const SOCIALS = {
   telegram: {
@@ -54,21 +54,21 @@ export default function Footer({locale}: {locale: Locale}) {
         <Image className={cn('sm:hidden', 'w-[27vw] xl:w-[30vw]')} src={LogoBigImage} alt={locale === 'ru' ? 'Логотип ZAP!' : 'ZAP! logo'} />
 
         <div className="sm:!mt-2 flex items-end sm:flex-wrap gap-6 sm:gap-y-2 text-black/40">
-          <Link href="/privacy-policy.pdf" target="_blank" className="size-fit text-right border-b border-black/40 hover:border-transparent duration-200">
-            <P>Privacy Policy</P>
-          </Link>
-
-          {/* <Link className={linkStyles} href="#terms-conditions">
+          <Link href="/terms-and-conditions.pdf" target="_blank" className="size-fit text-right border-b border-black/40 hover:border-transparent duration-200">
             <P>Terms & Conditions</P>
-          </Link> */}
-
-          <P className="text-right sm:text-left">
-            DIFC, Dubai, UAE <br className="hidden xl:block" /> Zap Internet Platform Ltd
-          </P>
+          </Link>
 
           <P className="text-right sm:text-left">
             © 2025. <br className="hidden xl:block" /> All rights reserved.
           </P>
+
+          <SPAN className="text-right sm:text-left leading-[1.2]">
+            Dubai, UAE
+            <br />
+            Dubai International Financial Center
+            <br />
+            DIFC Innovation One, Level 1
+          </SPAN>
         </div>
       </div>
 
