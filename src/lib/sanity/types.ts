@@ -1,5 +1,5 @@
 import type {Locale} from '@/i18n/routing'
-import type {UserType, RoleType, GridItemType, GridItemColor} from '@/lib/types'
+import type {UserType, GridItemType, GridItemColor} from '@/lib/types'
 
 import type {ImageProps} from 'next-sanity/image'
 import type {IconName} from 'lucide-react/dynamic'
@@ -14,7 +14,6 @@ export type LayoutData = {
   hero: HeroBlock
   mechanics: MechanicsBlock[]
   advantages: AdvantageBlock[]
-  reviews: ReviewBlock[]
   questions: QuestionBlock[]
 }
 
@@ -37,13 +36,6 @@ export type AdvantageBlock = {
   heading: LocalizedValue[]
   caption: LocalizedValue[]
   icon: IconName
-}
-
-export type ReviewBlock = {
-  name: LocalizedValue[]
-  role: RoleType
-  text: LocalizedValue[]
-  avatar: ImageProps
 }
 
 export type QuestionBlock = {
