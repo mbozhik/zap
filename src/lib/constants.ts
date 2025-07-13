@@ -19,7 +19,7 @@ export const BLOCK_HEADINGS = {
     ru: 'Почему мы?',
     en: 'Why us?',
   },
-  rewiews: {
+  reviews: {
     ru: 'Отзывы',
     en: 'Reviews',
   },
