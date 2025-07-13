@@ -1,4 +1,4 @@
-export type {LayoutData, HeroBlock, MechanicsBlock, AdvantageBlock, ReviewBlock, QuestionBlock} from './types'
+export type {LayoutData, HeroBlock, MechanicsBlock, AdvantageBlock, QuestionBlock} from './types'
 export type {UsersData, GridItem} from './types'
 
 export {client, urlForImage} from './config'

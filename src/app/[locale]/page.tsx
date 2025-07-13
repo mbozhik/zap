@@ -9,7 +9,7 @@ import Mechanics from '~/index/Mechanics'
 import Description from '~/index/Description'
 import Users from '~/index/Users'
 import Advantages from '~/index/Advantages'
-// import Reviews from '~/index/Reviews'
+import Reviews from '~/index/Reviews'
 import Questions from '~/index/Questions'
 import Action from '~/index/Action'
 
@@ -31,7 +31,7 @@ export default async function IndexPage({params}: PageProps) {
         <Description locale={locale} />
         <Users locale={locale} />
         <Advantages data={advantages} locale={locale} />
-        {/* <Reviews data={reviews} locale={locale} /> */}
+        <Reviews locale={locale} />
         <Questions data={questions} locale={locale} />
         <Action locale={locale} />
       </main>

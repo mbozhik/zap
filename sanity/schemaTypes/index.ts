@@ -4,7 +4,6 @@ import {itemMechanics} from './itemMechanics'
 import {users} from './users'
 import {itemGrid} from './itemGrid'
 import {itemAdvantages} from './itemAdvantages'
-import {itemReview} from './itemReview'
 import {itemQuestion} from './itemQuestion'
 
 export const getLocaleVersion = (field: unknown, locale = 'ru') =>
@@ -19,6 +18,5 @@ export const schemaTypes = [
   users,
   itemGrid,
   itemAdvantages,
-  itemReview,
   itemQuestion,
 ]

@@ -19,6 +19,7 @@
     "next-sanity": "^9.8.35",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
+    "react-google-reviews": "^1.7.4",
     "tailwind-merge": "^2.6.0"
   },
   "devDependencies": {

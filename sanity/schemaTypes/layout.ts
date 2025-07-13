@@ -38,14 +38,6 @@ export const layout = defineType({
       validation: (rule) => rule.required().min(1),
     }),
     defineField({
-      name: 'reviews',
-      title: 'Отзывы',
-      description: 'Минимум 4 элемента',
-      type: 'array',
-      of: [{type: 'itemReview'}],
-      validation: (Rule) => Rule.required().min(4),
-    }),
-    defineField({
       name: 'questions',
       title: 'Вопросы',
       type: 'array',
