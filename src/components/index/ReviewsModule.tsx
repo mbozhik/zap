@@ -1,6 +1,7 @@
 'use client'
 
-import {ArrowRight} from 'lucide-react'
+import GoogleLogo from '$/socials/google.svg'
+import {ArrowRight, Star} from 'lucide-react'
 
 import type {Locale} from '@/i18n/routing'
 import {CARD_ROUNDED} from '@/lib/constants'
@@ -11,13 +12,16 @@ import {useState, useEffect, useCallback, useMemo} from 'react'
 import {motion, AnimatePresence} from 'motion/react'
 
 import Image from 'next/image'
-import {H4, P} from '~/UI/Typography'
+import {P} from '~/UI/Typography'
+import Link from 'next/link'
 
 const REVIEWS_PER_PAGE = 4
 const MAX_COMMENT_LENGTH = 220
 const RUSSIAN_REGEX = /[а-яё]/i
 const TRANSLATED_PREFIX = '(Translated by Google)'
 const ORIGINAL_PREFIX = '(Original)'
+
+const GOOGLE_MAPS_REVIEWS_LINK = 'https://www.google.com/search?hl=ru-RU&gl=ru&q=zap!+-+DIFC+Innovation+One,+Level+1+-+Dubai+International+Financial+Center+-+Dubai+-+ОАЭ&ludocid=5222753368005930855&lsig=AB86z5W9FmhpdL5yaz7JUvEenIHW#lrd=0x3e5f43005958a0e9:0x487af2845177ef67,1,,,,'
 
 type Review = {
   reviewId?: string
@@ -26,6 +30,8 @@ type Review = {
   reviewer?: {displayName?: string; name?: string; profilePhotoUrl?: string; avatar?: string}
   avatar?: string
   name?: string
+  starRating?: number
+  createTime?: string
 }
 
 export default function ReviewsModule({locale}: {locale: Locale}) {
@@ -33,6 +39,53 @@ export default function ReviewsModule({locale}: {locale: Locale}) {
   const [reviews, setReviews] = useState<Review[]>([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
+
+  const getTimeText = useCallback((key: string, count?: number, locale: Locale = 'en') => {
+    const translations = {
+      en: {
+        justNow: 'Just now',
+        minutesAgo: `${count} minutes ago`,
+        hoursAgo: `${count} hours ago`,
+        daysAgo: `${count} days ago`,
+        monthsAgo: `${count} months ago`,
+        yearsAgo: `${count} years ago`,
+      },
+      ru: {
+        justNow: 'Только что',
+        minutesAgo: `${count} мин назад`,
+        hoursAgo: `${count} ч назад`,
+        daysAgo: `${count} дн назад`,
+        monthsAgo: `${count} мес назад`,
+        yearsAgo: `${count} лет назад`,
+      },
+    }
+
+    return translations[locale][key as keyof (typeof translations)[typeof locale]] || ''
+  }, [])
+
+  const formatTimeAgo = useCallback(
+    (createTime: string) => {
+      if (!createTime) return ''
+
+      const now = new Date()
+      const reviewDate = new Date(createTime)
+      const diffInMs = now.getTime() - reviewDate.getTime()
+
+      const diffInMinutes = Math.floor(diffInMs / (1000 * 60))
+      const diffInHours = Math.floor(diffInMs / (1000 * 60 * 60))
+      const diffInDays = Math.floor(diffInMs / (1000 * 60 * 60 * 24))
+      const diffInMonths = Math.floor(diffInDays / 30)
+      const diffInYears = Math.floor(diffInDays / 365)
+
+      if (diffInMinutes < 1) return getTimeText('justNow', undefined, locale)
+      if (diffInMinutes < 60) return getTimeText('minutesAgo', diffInMinutes, locale)
+      if (diffInHours < 24) return getTimeText('hoursAgo', diffInHours, locale)
+      if (diffInDays < 30) return getTimeText('daysAgo', diffInDays, locale)
+      if (diffInMonths < 12) return getTimeText('monthsAgo', diffInMonths, locale)
+      return getTimeText('yearsAgo', diffInYears, locale)
+    },
+    [getTimeText, locale],
+  )
 
   const getReviewLanguage = useCallback((comment: string) => {
     if (!comment) return 'unknown'
@@ -218,20 +271,38 @@ export default function ReviewsModule({locale}: {locale: Locale}) {
               const truncatedComment = displayedComment.length > MAX_COMMENT_LENGTH ? displayedComment.slice(0, MAX_COMMENT_LENGTH).trim() + '...' : displayedComment
 
               return (
-                <motion.div key={`${review.reviewId || review.id || idx}-${currentPage}`} initial={{opacity: 0, y: 20}} animate={{opacity: 1, y: 0}} exit={{opacity: 0, y: -20}} transition={{duration: 0.4, delay: idx * 0.1, ease: 'easeOut'}} className={cn('p-6 xl:p-5 sm:p-4 space-y-4 border-2 border-black', CARD_ROUNDED, idx === 3 && 'xl:hidden', [1, 2, 3].includes(idx) && 'sm:hidden')}>
-                  <div className="flex items-center gap-3">
-                    <Image className="block size-12 object-cover rounded-full" src={review.reviewer?.profilePhotoUrl || review.reviewer?.avatar || review.avatar || ''} alt={`Review on Zap: ${review.reviewer?.displayName || review.reviewer?.name || review.name || ''}`} width={250} height={250} />
+                <motion.div className={cn('p-6 xl:p-5 sm:p-4', 'flex flex-col justify-between gap-4', 'border border-black/10 shadow-black/10 shadow-lg', CARD_ROUNDED, idx === 3 && 'xl:hidden', [1, 2, 3].includes(idx) && 'sm:hidden')} initial={{opacity: 0, y: 20}} animate={{opacity: 1, y: 0}} exit={{opacity: 0, y: -20}} transition={{duration: 0.4, delay: idx * 0.1, ease: 'easeOut'}} key={`${review.reviewId || review.id || idx}-${currentPage}`}>
+                  <div className="space-y-4">
+                    <div className="flex items-center gap-4">
+                      <Image className="block size-12 object-cover rounded-full" src={review.reviewer?.profilePhotoUrl || review.reviewer?.avatar || review.avatar || ''} alt={`Review on Zap: ${review.reviewer?.displayName || review.reviewer?.name || review.name || ''}`} width={250} height={250} />
 
-                    <div className="space-y-0.5">
-                      <H4 animated className="!leading-normal">
-                        {review.reviewer?.displayName || review.reviewer?.name || review.name || ''}
-                      </H4>
+                      <div>
+                        <P animated className="text-black/80 font-semibold !leading-normal">
+                          {review.reviewer?.displayName || review.reviewer?.name || review.name || ''}
+                        </P>
+
+                        <p className="text-black/60 text-sm">{formatTimeAgo(review.createTime || '')}</p>
+                      </div>
                     </div>
+
+                    <P animated className="!leading-[1.3] pb-1">
+                      {truncatedComment}
+                    </P>
                   </div>
 
-                  <P animated className="!leading-[1.3] pb-1">
-                    {truncatedComment}
-                  </P>
+                  <div className="flex items-center justify-between">
+                    <div className="flex gap-1">
+                      {[...Array(5)].map((_, i) => {
+                        const rating = review.starRating || 5
+                        const isFilled = i < rating
+                        return <Star className={cn('size-6 sm:size-5', isFilled ? 'fill-[#f8af0a] text-[#f8af0a]' : 'fill-gray text-gray')} key={i} />
+                      })}
+                    </div>
+
+                    <Link href={GOOGLE_MAPS_REVIEWS_LINK} target="_blank" rel="noopener noreferrer">
+                      <Image className="size-8 sm:size-7 aspect-square" src={GoogleLogo} alt="Zap! google reviews" />
+                    </Link>
+                  </div>
                 </motion.div>
               )
             })}
