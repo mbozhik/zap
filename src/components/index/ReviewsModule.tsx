@@ -7,6 +7,7 @@ import type {Locale} from '@/i18n/routing'
 import {CARD_ROUNDED} from '@/lib/constants'
 
 import {cn} from '@/lib/utils'
+import {useMediaQuery} from '@/lib/use-media-query'
 
 import {useState, useEffect, useCallback, useMemo} from 'react'
 import {motion, AnimatePresence} from 'motion/react'
@@ -15,7 +16,8 @@ import Image from 'next/image'
 import {P} from '~/UI/Typography'
 import Link from 'next/link'
 
-const REVIEWS_PER_PAGE = 4
+const REVIEWS_PER_PAGE_DESKTOP = 3
+const REVIEWS_PER_PAGE_MOBILE = 1
 const MAX_COMMENT_LENGTH = 220
 const RUSSIAN_REGEX = /[а-яё]/i
 const TRANSLATED_PREFIX = '(Translated by Google)'
@@ -35,10 +37,12 @@ type Review = {
 }
 
 export default function ReviewsModule({locale}: {locale: Locale}) {
-  const [currentPage, setCurrentPage] = useState(0)
   const [reviews, setReviews] = useState<Review[]>([])
+  const [currentPage, setCurrentPage] = useState(0)
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
+
+  const isDesktop = useMediaQuery('(min-width: 768px)')
 
   const getTimeText = useCallback((key: string, count?: number, locale: Locale = 'en') => {
     const translations = {
@@ -198,10 +202,14 @@ export default function ReviewsModule({locale}: {locale: Locale}) {
   }, [])
 
   const paginationData = useMemo(() => {
-    const numPages = Math.ceil(reviews.length / REVIEWS_PER_PAGE)
-    const startIndex = currentPage * REVIEWS_PER_PAGE
-    const endIndex = startIndex + REVIEWS_PER_PAGE
-    const reviewsToShow = reviews.slice(startIndex, endIndex)
+    const reviewsPerPage = isDesktop ? REVIEWS_PER_PAGE_DESKTOP : REVIEWS_PER_PAGE_MOBILE
+
+    const availableReviews = isDesktop ? reviews.slice(0, Math.floor(reviews.length / REVIEWS_PER_PAGE_DESKTOP) * REVIEWS_PER_PAGE_DESKTOP) : reviews
+
+    const numPages = Math.ceil(availableReviews.length / reviewsPerPage)
+    const startIndex = currentPage * reviewsPerPage
+    const endIndex = startIndex + reviewsPerPage
+    const reviewsToShow = availableReviews.slice(startIndex, endIndex)
 
     return {
       numPages,
@@ -209,7 +217,7 @@ export default function ReviewsModule({locale}: {locale: Locale}) {
       canLoadPrev: numPages > 1,
       canLoadNext: numPages > 1,
     }
-  }, [reviews, currentPage])
+  }, [reviews, currentPage, isDesktop])
 
   const loadPrevReviews = useCallback(() => {
     setCurrentPage((prevPage) => (prevPage - 1 + paginationData.numPages) % paginationData.numPages)
@@ -261,17 +269,17 @@ export default function ReviewsModule({locale}: {locale: Locale}) {
 
   return (
     <div data-section="module-reviews">
-      <div className="flex sm:flex-col gap-4 xl:gap-3 sm:w-full">
+      <div className={cn('flex gap-4 xl:gap-3', isDesktop ? 'sm:flex-col sm:w-full' : 'flex-col')}>
         {paginationData.canLoadPrev && <NavigationButton direction="prev" onClick={loadPrevReviews} />}
 
-        <div className="grid grid-cols-4 xl:grid-cols-3 sm:grid-cols-1 gap-4 xl:gap-3 flex-1">
+        <div className={cn('grid gap-4 xl:gap-3 flex-1', isDesktop ? 'grid-cols-3' : 'grid-cols-1')}>
           <AnimatePresence mode="wait">
             {paginationData.reviewsToShow.map((review: Review, idx: number) => {
               const displayedComment = extractLocalizedText(review.comment, locale)
               const truncatedComment = displayedComment.length > MAX_COMMENT_LENGTH ? displayedComment.slice(0, MAX_COMMENT_LENGTH).trim() + '...' : displayedComment
 
               return (
-                <motion.div className={cn('p-6 xl:p-5 sm:p-4', 'flex flex-col justify-between gap-4', 'border border-black/10 shadow-black/10 shadow-lg', CARD_ROUNDED, idx === 3 && 'xl:hidden', [1, 2, 3].includes(idx) && 'sm:hidden')} initial={{opacity: 0, y: 20}} animate={{opacity: 1, y: 0}} exit={{opacity: 0, y: -20}} transition={{duration: 0.4, delay: idx * 0.1, ease: 'easeOut'}} key={`${review.reviewId || review.id || idx}-${currentPage}`}>
+                <motion.div className={cn('p-6 xl:p-5 sm:p-4', 'flex flex-col justify-between gap-4', 'border border-black/10 shadow-black/10 shadow-lg', CARD_ROUNDED)} initial={{opacity: 0, y: 20}} animate={{opacity: 1, y: 0}} exit={{opacity: 0, y: -20}} transition={{duration: 0.4, delay: idx * 0.1, ease: 'easeOut'}} key={`${review.reviewId || review.id || idx}-${currentPage}`}>
                   <div className="space-y-4">
                     <div className="flex items-center gap-4">
                       <Image className="block size-12 object-cover rounded-full" src={review.reviewer?.profilePhotoUrl || review.reviewer?.avatar || review.avatar || ''} alt={`Review on Zap: ${review.reviewer?.displayName || review.reviewer?.name || review.name || ''}`} width={250} height={250} />
