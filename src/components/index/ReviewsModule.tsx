@@ -91,48 +91,15 @@ export default function ReviewsModule({locale}: {locale: Locale}) {
     [getTimeText, locale],
   )
 
-  const getReviewLanguage = useCallback((comment: string) => {
-    if (!comment) return 'unknown'
+  const sortReviewsByDate = useCallback((reviewsArray: Review[]) => {
+    return [...reviewsArray].sort((a, b) => {
+      const dateA = new Date(a.createTime || 0).getTime()
+      const dateB = new Date(b.createTime || 0).getTime()
 
-    if (!comment.includes(TRANSLATED_PREFIX) && !comment.includes(ORIGINAL_PREFIX)) {
-      return RUSSIAN_REGEX.test(comment) ? 'ru' : 'en'
-    }
-
-    const originalStartIndex = comment.indexOf(ORIGINAL_PREFIX)
-
-    let originalText = ''
-
-    if (originalStartIndex !== -1) {
-      const endOfOriginalPrefix = originalStartIndex + ORIGINAL_PREFIX.length
-      originalText = comment.substring(endOfOriginalPrefix).trim()
-    }
-
-    if (originalText) {
-      return RUSSIAN_REGEX.test(originalText) ? 'ru' : 'en'
-    }
-
-    return RUSSIAN_REGEX.test(comment) ? 'ru' : 'en'
+      // Новые отзывы первыми (по убыванию даты)
+      return dateB - dateA
+    })
   }, [])
-
-  const sortReviewsByLanguage = useCallback(
-    (reviewsArray: Review[], currentLocale: Locale) => {
-      return [...reviewsArray].sort((a, b) => {
-        const langA = getReviewLanguage(a.comment)
-        const langB = getReviewLanguage(b.comment)
-
-        if (currentLocale === 'ru') {
-          if (langA === 'ru' && langB !== 'ru') return -1
-          if (langA !== 'ru' && langB === 'ru') return 1
-        } else {
-          if (langA === 'en' && langB !== 'en') return -1
-          if (langA !== 'en' && langB === 'en') return 1
-        }
-
-        return 0
-      })
-    },
-    [getReviewLanguage],
-  )
 
   useEffect(() => {
     const fetchReviews = async () => {
@@ -144,7 +111,7 @@ export default function ReviewsModule({locale}: {locale: Locale}) {
         const data = await res.json()
         const reviewsArr = data.reviews || (data.widget && data.widget.reviews) || []
 
-        const sortedReviews = sortReviewsByLanguage(reviewsArr, locale)
+        const sortedReviews = sortReviewsByDate(reviewsArr)
         setReviews(sortedReviews)
       } catch (error) {
         console.error('Failed to load reviews:', error)
@@ -154,7 +121,7 @@ export default function ReviewsModule({locale}: {locale: Locale}) {
       }
     }
     fetchReviews()
-  }, [locale, sortReviewsByLanguage])
+  }, [sortReviewsByDate])
 
   const extractLocalizedText = useCallback((comment: string, currentLocale: Locale) => {
     if (!comment.includes(TRANSLATED_PREFIX) && !comment.includes(ORIGINAL_PREFIX)) {
