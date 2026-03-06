@@ -23,6 +23,10 @@ const RUSSIAN_REGEX = /[а-яё]/i
 const TRANSLATED_PREFIX = '(Translated by Google)'
 const ORIGINAL_PREFIX = '(Original)'
 
+// Fetch reviews via Cloudflare Worker proxy (bypasses Russian IP blocks)
+const WORKER_URL = 'https://featurable-proxy.mbozhik.workers.dev/'
+const FEATURABLE_WIDGET_ID = process.env.NEXT_PUBLIC_FEATURABLE_WIDGET_ID
+
 const GOOGLE_MAPS_REVIEWS_LINK = 'https://www.google.com/search?hl=ru-RU&gl=ru&q=zap!+-+DIFC+Innovation+One,+Level+1+-+Dubai+International+Financial+Center+-+Dubai+-+ОАЭ&ludocid=5222753368005930855&lsig=AB86z5W9FmhpdL5yaz7JUvEenIHW#lrd=0x3e5f43005958a0e9:0x487af2845177ef67,1,,,,'
 
 type Review = {
@@ -105,7 +109,8 @@ export default function ReviewsModule({locale}: {locale: Locale}) {
     const fetchReviews = async () => {
       try {
         setLoading(true)
-        const res = await fetch('/api/reviews')
+
+        const res = await fetch(`${WORKER_URL}/${FEATURABLE_WIDGET_ID}`)
         if (!res.ok) throw new Error('Failed to fetch reviews')
 
         const data = await res.json()
